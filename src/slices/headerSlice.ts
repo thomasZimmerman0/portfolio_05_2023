@@ -6,7 +6,7 @@ interface HeaderState {
 }
 
 const initialState: HeaderState = {
-    value: "home"
+    value: "home",
 }
 
 export const headerSlice = createSlice({

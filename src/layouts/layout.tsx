@@ -25,6 +25,8 @@ function BaseLayout(props : {children: JSX.Element}) {
   const pageState = useAppSelector((state) => state.header.value)
   const dispatch = useAppDispatch();
 
+  dispatch(fetchQuote());
+
   /*Creates a Ref variable for the header that initially renders at the top of
    the page. This is not the header that will follow the user as they scroll*/
   const Ref : MutableRefObject<any> = useRef();
