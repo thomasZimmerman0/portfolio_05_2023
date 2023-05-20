@@ -1,5 +1,4 @@
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import type { RootState } from '../app/store';
 import { BibleState, Book, Chapter, Verse, Quote } from '../interfaces/interfaces';
 
 type Responses = Book[] | Chapter[] | Verse[]| Quote;
@@ -17,13 +16,9 @@ let callAPI = async(type: string, reqHeader: HeadersInit, id?: string) =>{
   if(type === 'getBooks'){
     url = 'https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/books'
     randNum = Math.floor(Math.random() * 66);
-  } else if(type === 'getChapters'){
-    url = `https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/books/${id}/chapters`;
-  } else if(type === 'getVerses'){
-    url = `https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/chapters/${id}/verses`;
-  } else if (type === 'getQuote'){
-    url = `https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/verses/${id}`
-  }
+  } else if (type === 'getChapters') url = `https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/books/${id}/chapters`;
+  else if(type === 'getVerses') url = `https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/chapters/${id}/verses`;
+  else if (type === 'getQuote') url = `https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/verses/${id}`;
   let response = await fetch(url, {
     method: 'GET',
     headers: reqHeader
@@ -35,7 +30,7 @@ let callAPI = async(type: string, reqHeader: HeadersInit, id?: string) =>{
   if(type === "getQuote"){
     return JSONQuote as Quote
   } else {
-    if(randNum == -1) randNum = Math.floor(Math.random() * JSON.length);
+    if(randNum === -1) randNum = Math.floor(Math.random() * JSON.length);
     return JSON[randNum].id
   }
 }
@@ -69,5 +64,4 @@ export const bibleSlice = createSlice({
     }
 })
 
-export const selectCount = (state: RootState) => state.header.value;
 export default bibleSlice.reducer

@@ -85,28 +85,28 @@ function BaseLayout(props : {children: JSX.Element}) {
           </h2>
           <ul>
             <li 
-            className={pageState == "home" ? "selected-page-button" : ""} 
+            className={pageState === "home" ? "selected-page-button" : ""} 
             onClick={async() => {dispatch(changeHeader("home"))}}>
               <Link to="/">
                 Home
               </Link>
             </li>
             <li 
-            className={pageState == "about" ? "selected-page-button" : ""} 
+            className={pageState === "about" ? "selected-page-button" : ""} 
             onClick={() => dispatch(changeHeader("about"))}>
               <Link to="/about">
                 About
               </Link>
             </li>
             <li 
-            className={pageState == "skills" ? "selected-page-button" : ""}
+            className={pageState === "skills" ? "selected-page-button" : ""}
             onClick={() => dispatch(changeHeader("skills"))}>
               <Link to="/skills">
                 Skills
               </Link>
             </li>
             <li
-            className={pageState == "contact" ? "selected-page-button" : ""}  
+            className={pageState === "contact" ? "selected-page-button" : ""}  
             onClick={() => dispatch(changeHeader("contact"))}>
               <Link to="/contact">
                 Contact
