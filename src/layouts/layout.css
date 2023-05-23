@@ -439,10 +439,14 @@ footer .img-cont p{
     }
 }
 
-@media (max-width: 347px){
+@media (max-width: 400px){
+    footer{
+        height: 40%;
+    }
     footer .img-cont{
         position: relative;
         flex-direction: column;
+        justify-content: space-around;
         height: 100%;
         width: 100%;
     }
@@ -459,7 +463,7 @@ footer .img-cont p{
     }
 
     footer .img-cont div p{
-        margin: 0;
+        margin: 0 10px 0 0;
         width: 50%;
         display: flex;
         justify-content: center;
