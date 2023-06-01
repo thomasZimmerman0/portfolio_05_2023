@@ -20,13 +20,17 @@ import {
 } from 'react-router-dom'
 
 function BaseLayout(props : {children: JSX.Element}) {
+  const dispatch = useAppDispatch();
+  /*Dispatch fetchQuote to set the state to a random bible quote using the bible API
+    It was necessary to throw the dispatch in a use effect so it doesn't run more than once per
+    page load.*/
+  useEffect(()=>{
+    dispatch(fetchQuote());
+  },[])
   /*Redux useSelector and dispatch to make changes to state and get the page state so different styles can
     be applied depending on the selected state. */
-  const pageState = useAppSelector((state) => state.header.value)
-  const dispatch = useAppDispatch();
-
-  dispatch(fetchQuote());
-
+  const pageState: string = useAppSelector((state) => state.header.value)
+  const bibleState : {quote: string, status: string} = useAppSelector((state)=> state.bible)
   /*Creates a Ref variable for the header that initially renders at the top of
    the page. This is not the header that will follow the user as they scroll*/
   const Ref : MutableRefObject<any> = useRef();
@@ -34,6 +38,14 @@ function BaseLayout(props : {children: JSX.Element}) {
   const [headerOneVisible, setHeaderOneVisible] = useState<boolean>(true);
   //more states
   const [dropdownToggle, setDropdownToggle] = useState<boolean>(true);
+  const [bibleQuote, setBibleQuote] = useState<string>("");
+
+  useEffect(()=>{
+    setBibleQuote((prevState)=>{
+      let cutoff = bibleState.quote.indexOf('</span>')
+      return ""
+    })
+  },[])
 
   useEffect(()=>{
     if(headerOneVisible){
@@ -51,7 +63,7 @@ function BaseLayout(props : {children: JSX.Element}) {
       setHeaderOneVisible(entry.isIntersecting);
     });
     observer.observe(Ref.current)
-  },[headerOneVisible])
+  },[])
   
   /*Framer motion variable that will keep track of the scroll progress on the Y axis 
   relative to my inital header (Ref). If no object was passed to useScroll() then
@@ -71,7 +83,6 @@ function BaseLayout(props : {children: JSX.Element}) {
   (The first value in both arrays passed to useTransform)*/
   const scale = useTransform(scrollYProgress, [1, 0], [0, 1]);
   const opacity = useTransform(scrollYProgress, [1, 0], [0, 1]);
-  
   return (
     <>
     {/* Motion header is the initial header on the page that takes up 50vh, once the user scrolls
@@ -210,6 +221,11 @@ function BaseLayout(props : {children: JSX.Element}) {
               </li>
           </motion.ul>
         {props.children}
+        <div className="parallax">
+          <div className="parallax-opacity-layer">
+            {bibleState.quote}
+          </div>
+        </div>
         <footer>
           <img src={elephant} className="elephant" alt="elephant"/>
           <div className="footer-divider"></div>

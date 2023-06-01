@@ -1,10 +1,11 @@
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { BibleState, Book, Chapter, Verse, Quote } from '../interfaces/interfaces';
+import { BibleState, Book, Chapter, Verse, Quote, BibleStateBuilder } from '../interfaces/interfaces';
 
-type Responses = Book[] | Chapter[] | Verse[]| Quote;
+type Responses = Book[] | Chapter[] | Verse[] | Quote;
 
 const initialState: BibleState = {
   status: "",
+  quoteName: "",
   quote: ""
 }
 
@@ -29,20 +30,24 @@ let callAPI = async(type: string, reqHeader: HeadersInit, id?: string) =>{
   })
   if(type === "getQuote"){
     return JSONQuote as Quote
-  } else {
-    if(randNum === -1) randNum = Math.floor(Math.random() * JSON.length);
-    return JSON[randNum].id
-  }
+  } else{if(randNum === -1) randNum = Math.floor(Math.random() * JSON.length)}
+  return JSON[randNum]
 }
 
 export const fetchQuote = createAsyncThunk('bible/fetchQuote', async()=>{
   const requestHeaders: HeadersInit = new Headers();
+  const setBibleQuote : BibleStateBuilder = {
+    quote: "",
+    quoteName: ""
+  }
   requestHeaders.set('api-key', process.env.REACT_APP_BIBLE_API!);
-  const bookId = await callAPI('getBooks', requestHeaders);
-  const chapterId = await callAPI('getChapters', requestHeaders, bookId as string);
-  const verseId = await callAPI('getVerses', requestHeaders, chapterId as string);
-  const quote = await callAPI('getQuote', requestHeaders, verseId as string);
-  return quote as Quote;
+  const book = await callAPI('getBooks', requestHeaders) as Book;
+  const chapter = await callAPI('getChapters', requestHeaders, book.id) as Chapter;
+  const verse = await callAPI('getVerses', requestHeaders, chapter.id) as Verse;
+  const quote = await callAPI('getQuote', requestHeaders, verse.id) as Quote;
+  setBibleQuote.quote = quote.content;
+  setBibleQuote.quoteName = verse.reference;
+  return setBibleQuote;
 })
 
 export const bibleSlice = createSlice({
@@ -54,8 +59,9 @@ export const bibleSlice = createSlice({
       .addCase(fetchQuote.pending, (state) => {
         state.status = 'loading'
       })
-      .addCase(fetchQuote.fulfilled, (state, action: PayloadAction<Quote>) => {
-        state.quote = action.payload.content
+      .addCase(fetchQuote.fulfilled, (state, action: PayloadAction<BibleStateBuilder>) => {
+        state.quote = action.payload.quote
+        state.quoteName = action.payload.quoteName
         state.status = 'success'
       })
       .addCase(fetchQuote.rejected, (state) => {

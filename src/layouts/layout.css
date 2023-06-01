@@ -297,6 +297,22 @@ header ul li a {
     color: white;
 }
 
+.parallax{
+    height: 250px;
+    min-width: 100%;
+    background-image: url("https://wallpaperaccess.com/full/338765.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.parallax-opacity-layer{
+    height: 100%;
+    width: 100%;
+    background-color:#00000059
+}
+
 footer {
     display: flex;
     align-items: center;

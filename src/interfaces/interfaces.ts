@@ -1,5 +1,6 @@
 export interface BibleState {
     status: string,
+    quoteName: string,
     quote: string,
 }
 
@@ -40,4 +41,8 @@ export interface Quote {
   previous: {id: string, number: string}
   reference: string
   verseCount: number
+}
+export interface BibleStateBuilder {
+  quote: string,
+  quoteName: string,
 }
