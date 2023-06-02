@@ -21,39 +21,29 @@ import {
 
 function BaseLayout(props : {children: JSX.Element}) {
   const dispatch = useAppDispatch();
-  /*Dispatch fetchQuote to set the state to a random bible quote using the bible API
-    It was necessary to throw the dispatch in a use effect so it doesn't run more than once per
-    page load.*/
-  useEffect(()=>{
-    dispatch(fetchQuote());
-  },[])
   /*Redux useSelector and dispatch to make changes to state and get the page state so different styles can
-    be applied depending on the selected state. */
-  const pageState: string = useAppSelector((state) => state.header.value)
-  const bibleState : {quote: string, status: string} = useAppSelector((state)=> state.bible)
+  be applied depending on the selected state. */
+  const pageState: string = useAppSelector((state) => state.header.value);
+  const bibleState: {quote: string, quoteName: string, status: string} = useAppSelector((state) => state.bible);
   /*Creates a Ref variable for the header that initially renders at the top of
-   the page. This is not the header that will follow the user as they scroll*/
+  the page. This is not the header that will follow the user as they scroll*/
   const Ref : MutableRefObject<any> = useRef();
   //State variable to keep track of weather the initial header is visible to the user or not
   const [headerOneVisible, setHeaderOneVisible] = useState<boolean>(true);
   //more states
   const [dropdownToggle, setDropdownToggle] = useState<boolean>(true);
-  const [bibleQuote, setBibleQuote] = useState<string>("");
-
+  const [parsedQuote, setParsedQuote] = useState<{
+    quote: string, 
+    quoteName: string
+  }>({
+    quote: '',
+    quoteName: '',
+  });
   useEffect(()=>{
-    setBibleQuote((prevState)=>{
-      let cutoff = bibleState.quote.indexOf('</span>')
-      return ""
-    })
-  },[])
-
-  useEffect(()=>{
-    if(headerOneVisible){
-      setDropdownToggle(true);
-    }
-  },[headerOneVisible])
-
-  useEffect(()=>{
+    /*Dispatch fetchQuote to set the state to a random bible quote using the bible API
+    It was necessary to throw the dispatch in a use effect so it doesn't run more than once per
+    page load.*/
+    dispatch(fetchQuote());
     /*IntersectionObserver Object that is going to observe the Ref to the initial header when
     When the users view is intersecting with the initial header ( which is being stored in Ref )
     then the headerOneVisible state gets set to true. This allows me to know weather or not to render
@@ -64,7 +54,27 @@ function BaseLayout(props : {children: JSX.Element}) {
     });
     observer.observe(Ref.current)
   },[])
-  
+  useEffect(()=>{
+    let parseQuote = (quote: string): string =>{
+      let strsToParse = ['<span class="add">','¶','ss="mt1">','<span class="nd">','</span>','<span class="wj">']
+      for(let str of strsToParse){
+        if(quote.includes(str)) quote = quote.replaceAll(str, '')
+      }
+      return quote;
+    }
+    if(bibleState.status == "success"){
+      let cutoff = bibleState.quote.indexOf('</span>');
+      let slicedQuote = bibleState.quote.slice(cutoff + 7);
+      slicedQuote = slicedQuote.slice(0, -4);
+      setParsedQuote({
+        quote: parseQuote(slicedQuote),
+        quoteName: bibleState.quoteName
+      })
+    }
+  }, [bibleState])
+  useEffect(()=>{
+    if(headerOneVisible) setDropdownToggle(true);
+  },[headerOneVisible])
   /*Framer motion variable that will keep track of the scroll progress on the Y axis 
   relative to my inital header (Ref). If no object was passed to useScroll() then
   it would be relative to the entire viewport. The offet key lets me declare where I am 
@@ -223,7 +233,11 @@ function BaseLayout(props : {children: JSX.Element}) {
         {props.children}
         <div className="parallax">
           <div className="parallax-opacity-layer">
-            {bibleState.quote}
+          {parsedQuote.quoteName ? 
+            <p>{parsedQuote.quoteName} {parsedQuote.quote}</p> 
+          : 
+            <></>
+          }
           </div>
         </div>
         <footer>
@@ -254,5 +268,4 @@ function BaseLayout(props : {children: JSX.Element}) {
     </>
   );
 }
-
 export default BaseLayout;
