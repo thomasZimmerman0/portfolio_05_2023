@@ -18,7 +18,6 @@ import {
   Link,
   ScrollRestoration
 } from 'react-router-dom'
-import { BooleanLiteral } from 'typescript';
 
 function BaseLayout(props : {children: JSX.Element}) {
   const dispatch = useAppDispatch();
@@ -34,6 +33,7 @@ function BaseLayout(props : {children: JSX.Element}) {
   //State variable to keep track of weather the initial header is visible to the user or not
   const [headerOneVisible, setHeaderOneVisible] = useState<boolean>(true);
   //more states
+  const [timer, setTimer] = useState<boolean>(true);
   const [dropdownToggle, setDropdownToggle] = useState<boolean>(true);
   const [parsedQuote, setParsedQuote] = useState<{
     quote: string, 
@@ -63,10 +63,16 @@ function BaseLayout(props : {children: JSX.Element}) {
   //more Framer Motion
   const quoteInView = useInView(quoteRef);
   useEffect(()=>{
+
     /*Dispatch fetchQuote to set the state to a random bible quote using the bible API
     It was necessary to throw the dispatch in a use effect so it doesn't run more than once per
-    page load.*/
-    dispatch(fetchQuote());
+    page load. 
+    
+    (This is no longer necessary because dispatch fetch quote gets called when the quote is in view,
+     but I'll leve the comments here from reference)*/
+
+    // dispatch(fetchQuote());
+
     /*IntersectionObserver Object that is going to observe the Ref to the initial header when
     When the users view is intersecting with the initial header ( which is being stored in Ref )
     then the headerOneVisible state gets set to true. This allows me to know weather or not to render
@@ -79,7 +85,7 @@ function BaseLayout(props : {children: JSX.Element}) {
   },[dispatch])
   useEffect(()=>{
     let parseQuote = (quote: string): string =>{
-      let strsToParse = ['<span class="add">','¶','ss="mt1">','<span class="nd">','</span>','<span class="wj">']
+      let strsToParse = ['<span class="add">','¶','ss="mt1">','<span class="nd">','</span>','<span class="wj">', '</p><p class="q1"><span data-number="1" data-sid="PSA 26:1" class="v">']
       for(let str of strsToParse){
         if(quote.includes(str)) quote = quote.replaceAll(str, '')
       }
@@ -93,15 +99,20 @@ function BaseLayout(props : {children: JSX.Element}) {
         quote: parseQuote(slicedQuote),
         quoteName: bibleState.quoteName,
       })
-
     }
   }, [bibleState])
   useEffect(()=>{
     if(headerOneVisible) setDropdownToggle(true);
   },[headerOneVisible])
   useEffect(()=>{
-    if(!quoteInView) dispatch(fetchQuote())
-  },[quoteInView, dispatch])
+    if(!quoteInView && timer) {
+      dispatch(fetchQuote())
+      setTimer(false);
+    }
+    if(quoteInView && !timer){
+      setTimeout(()=>{setTimer(true)}, 5000)
+    }
+  },[quoteInView, timer, dispatch])
   return (
     <>
     {/* Motion header is the initial header on the page that takes up 50vh, once the user scrolls
@@ -240,7 +251,7 @@ function BaseLayout(props : {children: JSX.Element}) {
               </li>
           </motion.ul>
         {props.children}
-        <div className="parallax">
+        <div className="parallax" ref={quoteRef}>
           <div className="parallax-opacity-layer">
             <h2>Randomy Generated Bible Verse!</h2>
             <div className="quote-explain">
@@ -250,13 +261,22 @@ function BaseLayout(props : {children: JSX.Element}) {
             </div>
             <motion.div 
             className="verse-cont"
-            ref={quoteRef}
-            animate={quoteInView ? {x : ["-100%", "0%"]} : {x: 0}}
+            variants={{
+              inView : {
+                opacity: [0, 1],
+                y: [100, 0]
+              },
+              outView : {
+                opacity: 0,
+                y: 0
+              }
+            }}
+            animate={quoteInView ? "inView" : "outView"}
             transition={{
-              delay: 0.3,
-              duration: 0.8,
               type: 'spring',
-              ease: 'linear'
+              ease: 'linear',
+              delay: 0.3,
+              duartion: 2
             }}>
             {parsedQuote.quoteName ? 
             <>

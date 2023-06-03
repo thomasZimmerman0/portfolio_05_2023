@@ -344,16 +344,18 @@ header ul li a {
     margin: auto 0 auto 0;
     font-weight: lighter;
     font-family: 'Oxanium';
-    text-align: center;
     color: white;
 }
 .parallax-opacity-layer h3{
-    margin-right: 10px;
+    margin: auto 0 auto auto;
+    flex-grow: 1;
+    text-align: center;
     text-decoration: underline;
     font-size: 40px
 }
 
 .parallax-opacity-layer p{
+    width: 80%;
     font-size: 30px;
 }
 
