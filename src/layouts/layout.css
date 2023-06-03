@@ -2,8 +2,9 @@
     font-family: 'cowboy';
     src: url('../../public/Carnevalee\ Freakshow.ttf');
 }
-
 @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Imbue:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap');
 
 body{
     background-color: rgb(255, 255, 255);
@@ -298,7 +299,7 @@ header ul li a {
 }
 
 .parallax{
-    height: 250px;
+    height: 25vh;
     min-width: 100%;
     background-image: url("https://wallpaperaccess.com/full/338765.jpg");
     background-attachment: fixed;
@@ -308,9 +309,52 @@ header ul li a {
 }
 
 .parallax-opacity-layer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     height: 100%;
     width: 100%;
-    background-color:#00000059
+    background-color:#00000082;
+    overflow: hidden;
+}
+
+.parallax-opacity-layer * {
+    margin: 0;
+}
+
+.quote-explain {
+    display: none;
+}
+
+.verse-cont {
+    display: flex;
+    justify-content: center;
+}
+
+.parallax-opacity-layer h2 {
+    padding: 1% 0 1% 0;
+    text-align: center;
+    text-shadow: 3px 2px 2px #00ddff;
+    color: rgb(255, 255, 255);
+    font-family: 'Imbue';
+    font-size: 80px;
+}
+.verse-cont h3,
+.verse-cont p {
+    margin: auto 0 auto 0;
+    font-weight: lighter;
+    font-family: 'Oxanium';
+    text-align: center;
+    color: white;
+}
+.parallax-opacity-layer h3{
+    margin-right: 10px;
+    text-decoration: underline;
+    font-size: 40px
+}
+
+.parallax-opacity-layer p{
+    font-size: 30px;
 }
 
 footer {
@@ -374,6 +418,7 @@ footer .img-cont p{
     color: white;
     width: auto;
     font-size: 1.4rem;
+    cursor: default;
     font-family:'Oxanium', Tahoma, Geneva, Verdana, sans-serif;
 }
 
