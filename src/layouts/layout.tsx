@@ -11,8 +11,8 @@ import { useAppSelector, useAppDispatch } from '../app/hooks';
 import { changeHeader } from '../slices/headerSlice';
 import { fetchQuote } from '../slices/bibleSlice';
 
-import { useRef, useEffect, MutableRefObject, useState} from 'react';
-import {motion, useScroll,  useTransform} from "framer-motion";
+import { useRef, useEffect, MutableRefObject, useState } from 'react';
+import { motion, useScroll,  useTransform, useInView } from "framer-motion";
 
 import { 
   Link,
@@ -27,54 +27,21 @@ function BaseLayout(props : {children: JSX.Element}) {
   const bibleState: {quote: string, quoteName: string, status: string} = useAppSelector((state) => state.bible);
   /*Creates a Ref variable for the header that initially renders at the top of
   the page. This is not the header that will follow the user as they scroll*/
-  const Ref : MutableRefObject<any> = useRef();
+  const headerRef : MutableRefObject<any> = useRef();
+  //more refs
+  const quoteRef : MutableRefObject<any> = useRef();
   //State variable to keep track of weather the initial header is visible to the user or not
   const [headerOneVisible, setHeaderOneVisible] = useState<boolean>(true);
   //more states
+  const [timer, setTimer] = useState<boolean>(true);
   const [dropdownToggle, setDropdownToggle] = useState<boolean>(true);
   const [parsedQuote, setParsedQuote] = useState<{
     quote: string, 
     quoteName: string
   }>({
     quote: '',
-    quoteName: '',
+    quoteName: ''
   });
-  useEffect(()=>{
-    /*Dispatch fetchQuote to set the state to a random bible quote using the bible API
-    It was necessary to throw the dispatch in a use effect so it doesn't run more than once per
-    page load.*/
-    dispatch(fetchQuote());
-    /*IntersectionObserver Object that is going to observe the Ref to the initial header when
-    When the users view is intersecting with the initial header ( which is being stored in Ref )
-    then the headerOneVisible state gets set to true. This allows me to know weather or not to render
-    the second header down in the JSX */
-    const observer = new IntersectionObserver((entries, observer)=>{
-      const entry: any = entries[0];
-      setHeaderOneVisible(entry.isIntersecting);
-    });
-    observer.observe(Ref.current)
-  },[])
-  useEffect(()=>{
-    let parseQuote = (quote: string): string =>{
-      let strsToParse = ['<span class="add">','¶','ss="mt1">','<span class="nd">','</span>','<span class="wj">']
-      for(let str of strsToParse){
-        if(quote.includes(str)) quote = quote.replaceAll(str, '')
-      }
-      return quote;
-    }
-    if(bibleState.status == "success"){
-      let cutoff = bibleState.quote.indexOf('</span>');
-      let slicedQuote = bibleState.quote.slice(cutoff + 7);
-      slicedQuote = slicedQuote.slice(0, -4);
-      setParsedQuote({
-        quote: parseQuote(slicedQuote),
-        quoteName: bibleState.quoteName
-      })
-    }
-  }, [bibleState])
-  useEffect(()=>{
-    if(headerOneVisible) setDropdownToggle(true);
-  },[headerOneVisible])
   /*Framer motion variable that will keep track of the scroll progress on the Y axis 
   relative to my inital header (Ref). If no object was passed to useScroll() then
   it would be relative to the entire viewport. The offet key lets me declare where I am 
@@ -82,7 +49,7 @@ function BaseLayout(props : {children: JSX.Element}) {
   "On this Ref element, track the Y progress from where the start of the element meets the start 
   of the viewport, to when the end of the element meets the start of the viewport."*/
   const { scrollYProgress } = useScroll({
-    target: Ref,
+    target: headerRef,
     offset: ["start start", "end start"]
   });
   /*Framer motion variables to track transform the scale and opacity of particular elements
@@ -93,6 +60,59 @@ function BaseLayout(props : {children: JSX.Element}) {
   (The first value in both arrays passed to useTransform)*/
   const scale = useTransform(scrollYProgress, [1, 0], [0, 1]);
   const opacity = useTransform(scrollYProgress, [1, 0], [0, 1]);
+  //more Framer Motion
+  const quoteInView = useInView(quoteRef);
+  useEffect(()=>{
+
+    /*Dispatch fetchQuote to set the state to a random bible quote using the bible API
+    It was necessary to throw the dispatch in a use effect so it doesn't run more than once per
+    page load. 
+    
+    (This is no longer necessary because dispatch fetch quote gets called when the quote is in view,
+     but I'll leve the comments here from reference)*/
+
+    // dispatch(fetchQuote());
+
+    /*IntersectionObserver Object that is going to observe the Ref to the initial header when
+    When the users view is intersecting with the initial header ( which is being stored in Ref )
+    then the headerOneVisible state gets set to true. This allows me to know weather or not to render
+    the second header down in the JSX */
+    const observer = new IntersectionObserver((entries, observer)=>{
+      const entry: any = entries[0];
+      setHeaderOneVisible(entry.isIntersecting);
+    });
+    observer.observe(headerRef.current)
+  },[dispatch])
+  useEffect(()=>{
+    let parseQuote = (quote: string): string =>{
+      let strsToParse = ['<span class="add">','¶','ss="mt1">','<span class="nd">','</span>','<span class="wj">', '</p><p class="q1"><span data-number="1" data-sid="PSA 26:1" class="v">']
+      for(let str of strsToParse){
+        if(quote.includes(str)) quote = quote.replaceAll(str, '')
+      }
+      return quote;
+    }
+    if(bibleState.status === "success"){
+      let cutoff = bibleState.quote.indexOf('</span>');
+      let slicedQuote = bibleState.quote.slice(cutoff + 7);
+      slicedQuote = slicedQuote.slice(0, -4);
+      setParsedQuote({
+        quote: parseQuote(slicedQuote),
+        quoteName: bibleState.quoteName,
+      })
+    }
+  }, [bibleState])
+  useEffect(()=>{
+    if(headerOneVisible) setDropdownToggle(true);
+  },[headerOneVisible])
+  useEffect(()=>{
+    if(!quoteInView && timer) {
+      dispatch(fetchQuote())
+      setTimer(false);
+    }
+    if(quoteInView && !timer){
+      setTimeout(()=>{setTimer(true)}, 5000)
+    }
+  },[quoteInView, timer, dispatch])
   return (
     <>
     {/* Motion header is the initial header on the page that takes up 50vh, once the user scrolls
@@ -100,7 +120,7 @@ function BaseLayout(props : {children: JSX.Element}) {
         <motion.header style={{
           scale,
           opacity
-        }} ref={Ref}>
+        }} ref={headerRef}>
           <h2>
             Tom ZimmermaN
           </h2>
@@ -156,24 +176,24 @@ function BaseLayout(props : {children: JSX.Element}) {
               </div>
               <ul className="sticky-buttons">
                 <li
-                className={pageState == "home" ? "selected-page-button-sb" : "not-selected-page-button-sb"}
+                className={pageState === "home" ? "selected-page-button-sb" : "not-selected-page-button-sb"}
                 onClick={() => dispatch(changeHeader("home"))}>
                   <Link to="/">Home</Link>
                 </li>
                 <li
-                className={pageState == "about" ? "selected-page-button-sb" : "not-selected-page-button-sb"}
+                className={pageState === "about" ? "selected-page-button-sb" : "not-selected-page-button-sb"}
                 onClick={() => dispatch(changeHeader("about"))}>
                   <Link to="/about">About</Link>
                 </li>
                 <li
-                className={pageState == "skills" ? "selected-page-button-sb" : "not-selected-page-button-sb"}  
+                className={pageState === "skills" ? "selected-page-button-sb" : "not-selected-page-button-sb"}  
                 onClick={() => dispatch(changeHeader("skills"))}>
                   <Link to="/skills">
                     Skills
                   </Link>
                 </li>
                 <li
-                className={pageState == "contact" ? "selected-page-button-sb" : "not-selected-page-button-sb"}  
+                className={pageState === "contact" ? "selected-page-button-sb" : "not-selected-page-button-sb"}  
                 onClick={() => dispatch(changeHeader("contact"))}>
                   <Link to="/contact">
                     Contact
@@ -200,14 +220,14 @@ function BaseLayout(props : {children: JSX.Element}) {
               <li>
                 <Link 
                 onClick={() => dispatch(changeHeader("home"))}
-                className={pageState == "home" ? "selected-menu-item" : "unselected-menu-item"} 
+                className={pageState === "home" ? "selected-menu-item" : "unselected-menu-item"} 
                 to="/">
                   Home
                 </Link>
               </li>
               <li>
                 <Link 
-                className={pageState == "about" ? "selected-menu-item" : "unselected-menu-item"}
+                className={pageState === "about" ? "selected-menu-item" : "unselected-menu-item"}
                 onClick={() => dispatch(changeHeader("about"))} 
                 to="/about">
                   About
@@ -215,7 +235,7 @@ function BaseLayout(props : {children: JSX.Element}) {
               </li>
               <li>
                 <Link 
-                className={pageState == "skills" ? "selected-menu-item" : "unselected-menu-item"}
+                className={pageState === "skills" ? "selected-menu-item" : "unselected-menu-item"}
                 onClick={() => dispatch(changeHeader("skills"))} 
                 to="/skills">
                   Skills
@@ -223,7 +243,7 @@ function BaseLayout(props : {children: JSX.Element}) {
               </li>
               <li>
                 <Link
-                className={pageState == "contact" ? "selected-menu-item" : "unselected-menu-item"} 
+                className={pageState === "contact" ? "selected-menu-item" : "unselected-menu-item"} 
                 onClick={() => dispatch(changeHeader("contact"))}
                 to="/contact">
                   Contact
@@ -231,16 +251,42 @@ function BaseLayout(props : {children: JSX.Element}) {
               </li>
           </motion.ul>
         {props.children}
-        <div className="parallax">
+        <div className="parallax" ref={quoteRef}>
           <div className="parallax-opacity-layer">
-          {parsedQuote.quoteName ? 
-          <>
-            <h3>{parsedQuote.quoteName}</h3> 
-            <p>{parsedQuote.quote}</p> 
-          </>
-          : 
-            <></>
-          }
+            <h2>Randomy Generated Bible Verse!</h2>
+            <div className="quote-explain">
+              This Bible verse is being randomy generated with the bible api from https://scripture.api.bible/. The call is being made with Redux
+              Thunk, the data is then stored in the applications global state. Reloading the page will grab a new random verse from anywhere in the
+              KJV of the Bible!
+            </div>
+            <motion.div 
+            className="verse-cont"
+            variants={{
+              inView : {
+                opacity: [0, 1],
+                y: [100, 0]
+              },
+              outView : {
+                opacity: 0,
+                y: 0
+              }
+            }}
+            animate={quoteInView ? "inView" : "outView"}
+            transition={{
+              type: 'spring',
+              ease: 'linear',
+              delay: 0.3,
+              duartion: 2
+            }}>
+            {parsedQuote.quoteName ? 
+            <>
+              <h3>{parsedQuote.quoteName}:</h3>
+              <p> {parsedQuote.quote}</p> 
+            </>
+            : 
+              <></>
+            }
+            </motion.div>
           </div>
         </div>
         <footer>
@@ -248,13 +294,13 @@ function BaseLayout(props : {children: JSX.Element}) {
           <div className="footer-divider"></div>
           <div className="img-cont">
             <div>
-              <a href="https://www.linkedin.com/in/thomas-zimmerman-76843824b/" target='_blank'>
+              <a href="https://www.linkedin.com/in/thomas-zimmerman-76843824b/" rel="noopener noreferrer" target='_blank'>
                 <motion.img whileHover={{scale: 1.2}} transition={{ type: "spring", stiffness: 200, damping: 9}} src={linkedin} alt="linkedin"/>
               </a>
               <p>VISIT MY LINKEDIN</p>
             </div>
             <div>
-              <a href="https://github.com/thomasZimmerman0" target='_blank'>
+              <a href="https://github.com/thomasZimmerman0" rel="noopener noreferrer" target='_blank'>
                 <motion.img whileHover={{scale: 1.2}} transition={{ type: "spring", stiffness: 200, damping: 9}} src={github} alt="github"/>
               </a>
               <p>VISIT MY GITHUB</p>
