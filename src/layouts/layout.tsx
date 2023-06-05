@@ -234,7 +234,10 @@ function BaseLayout(props : {children: JSX.Element}) {
         <div className="parallax">
           <div className="parallax-opacity-layer">
           {parsedQuote.quoteName ? 
-            <p>{parsedQuote.quoteName} {parsedQuote.quote}</p> 
+          <>
+            <h3>{parsedQuote.quoteName}</h3> 
+            <p>{parsedQuote.quote}</p> 
+          </>
           : 
             <></>
           }

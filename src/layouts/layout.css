@@ -215,7 +215,7 @@ header ul li a {
     border-radius: 3px;
 }
 
-.closed-nav{
+.closed-nav {
     transition: ease-in-out transform .05s, background-color .05s, position .05s;
 }
 
@@ -305,6 +305,10 @@ header ul li a {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+}
+
+.parallax h3 {
+    color: white;
 }
 
 .parallax-opacity-layer{
