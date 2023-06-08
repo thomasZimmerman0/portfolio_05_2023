@@ -9,6 +9,7 @@
 body{
     background-color: rgb(255, 255, 255);
     margin: 0;
+    overflow: hidden;
 }
 
 .d-none{
@@ -299,13 +300,14 @@ header ul li a {
 }
 
 .parallax{
-    height: 25vh;
+    height: 35vh;
     min-width: 100%;
     background-image: url("https://wallpaperaccess.com/full/338765.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    cursor: default;
 }
 
 .parallax h3 {
@@ -328,6 +330,16 @@ header ul li a {
 
 .quote-explain {
     display: none;
+    position: absolute;
+    padding: 40px;
+    height: auto;
+    width: 400px;
+    background-color :white;
+    font-family:'Oxanium', Tahoma, Geneva, Verdana, sans-serif;
+    border: solid black 5px;
+    font-weight: bolder;
+    z-index: 200;
+    border-radius: 50px;
 }
 
 .verse-cont {
@@ -336,13 +348,19 @@ header ul li a {
 }
 
 .parallax-opacity-layer h2 {
+    margin: 10px auto 10px auto;
+    width: 75%;
     padding: 1% 0 1% 0;
+    border-radius: 200px;
+    box-shadow: 1px 1px 25px 5px black;
     text-align: center;
-    text-shadow: 3px 2px 2px #00ddff;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     font-family: 'Imbue';
     font-size: 80px;
+    background: #FFFFFF;
+    background: radial-gradient(at center,#a5a5a5,#f7f7f7);
 }
+
 .verse-cont h3,
 .verse-cont p {
     margin: auto 0 auto 0;

@@ -30,6 +30,7 @@ function BaseLayout(props : {children: JSX.Element}) {
   const headerRef : MutableRefObject<any> = useRef();
   //more refs
   const quoteRef : MutableRefObject<any> = useRef();
+  const quotePopupRef : MutableRefObject<any> = useRef();
   //State variable to keep track of weather the initial header is visible to the user or not
   const [headerOneVisible, setHeaderOneVisible] = useState<boolean>(true);
   //more states
@@ -113,6 +114,18 @@ function BaseLayout(props : {children: JSX.Element}) {
       setTimeout(()=>{setTimer(true)}, 5000)
     }
   },[quoteInView, timer, dispatch])
+  let mouseOverOutBibleQuote = (displayProp: string) =>{
+      let popup = quotePopupRef.current; // sets reference to popup box to popup variable
+      popup.style.display = displayProp; // switches display value of popup box
+  }
+  let mouseMove = (e: React.MouseEvent<HTMLHeadingElement, MouseEvent>)=>{
+    console.log(e)
+    let pageY = e.pageY;
+    let pageX = e.pageX;
+    let popup = quotePopupRef.current;
+    popup.style.top = `${pageY + 10}px`;
+    popup.style.left = `${pageX + 25}px`;
+  }
   return (
     <>
     {/* Motion header is the initial header on the page that takes up 50vh, once the user scrolls
@@ -253,10 +266,15 @@ function BaseLayout(props : {children: JSX.Element}) {
         {props.children}
         <div className="parallax" ref={quoteRef}>
           <div className="parallax-opacity-layer">
-            <h2>Randomy Generated Bible Verse!</h2>
-            <div className="quote-explain">
+            <h2
+            onMouseMove={(e)=> mouseMove(e)}
+            onMouseEnter={()=>mouseOverOutBibleQuote("block")} 
+            onMouseLeave={()=>mouseOverOutBibleQuote("none")}>
+              Randomy Generated Bible Verse!
+            </h2>
+            <div className="quote-explain" ref={quotePopupRef}>
               This Bible verse is being randomy generated with the bible api from https://scripture.api.bible/. The call is being made with Redux
-              Thunk, the data is then stored in the applications global state. Reloading the page will grab a new random verse from anywhere in the
+              Thunk, the data is then stored in the applications global state. Wating 5 seconds then scrolling the verse out of sight will grab a new random verse from anywhere in the
               KJV of the Bible!
             </div>
             <motion.div 
