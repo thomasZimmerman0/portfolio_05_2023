@@ -9,7 +9,7 @@
 body{
     background-color: rgb(255, 255, 255);
     margin: 0;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .d-none{
@@ -337,9 +337,22 @@ header ul li a {
     background-color :white;
     font-family:'Oxanium', Tahoma, Geneva, Verdana, sans-serif;
     border: solid black 5px;
+    font-size: 16px;
     font-weight: bolder;
     z-index: 200;
     border-radius: 50px;
+}
+
+.quote-explain span{
+    color: lightseagreen;
+    text-decoration: underline;
+    font-size: 16px;
+}
+.thunk{
+    display: inline;
+    color: red;
+    font-weight: 2000px;
+    font-size: 16px;
 }
 
 .verse-cont {

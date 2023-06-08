@@ -273,8 +273,8 @@ function BaseLayout(props : {children: JSX.Element}) {
               Randomy Generated Bible Verse!
             </h2>
             <div className="quote-explain" ref={quotePopupRef}>
-              This Bible verse is being randomy generated with the bible api from https://scripture.api.bible/. The call is being made with Redux
-              Thunk, the data is then stored in the applications global state. Wating 5 seconds then scrolling the verse out of sight will grab a new random verse from anywhere in the
+              This Bible verse is being randomy generated with the bible api from <span>https://scripture.api.bible/</span>. The call is being made with <div className="thunk">Redux
+              Thunk</div>, the data is then stored in the applications global state. Wating 5 seconds then scrolling the verse out of sight will grab a new random verse from anywhere in the
               KJV of the Bible!
             </div>
             <motion.div 
