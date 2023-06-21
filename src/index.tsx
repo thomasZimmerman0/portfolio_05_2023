@@ -8,6 +8,7 @@ import { store } from './app/store'
 
 import './index.css';
 import App from './app/App';
+import Skills from './components/Skills'
 import BaseLayout from './layouts/layout'
 
 const router = createBrowserRouter([
@@ -20,11 +21,11 @@ const router = createBrowserRouter([
     element: <BaseLayout><App /></BaseLayout>
   },
   {
-    path: "contact",
-    element: <BaseLayout><App /></BaseLayout>
+    path: "skills",
+    element: <BaseLayout><Skills /></BaseLayout>
   },
   {
-    path: "skills",
+    path: "contact",
     element: <BaseLayout><App /></BaseLayout>
   },
 ])

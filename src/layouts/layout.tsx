@@ -114,6 +114,7 @@ function BaseLayout(props : {children: JSX.Element}) {
       setTimeout(()=>{setTimer(true)}, 5000)
     }
   },[quoteInView, timer, dispatch])
+
   let mouseOverOutBibleQuote = (displayProp: string) =>{
       let popup = quotePopupRef.current; // sets reference to popup box to popup variable
       popup.style.display = displayProp; // switches display value of popup box
@@ -273,8 +274,8 @@ function BaseLayout(props : {children: JSX.Element}) {
               Randomy Generated Bible Verse!
             </h2>
             <div className="quote-explain" ref={quotePopupRef}>
-              This Bible verse is being randomy generated with the bible api from <span>https://scripture.api.bible/</span>. The call is being made with <div className="thunk">Redux
-              Thunk</div>, the data is then stored in the applications global state. Wating 5 seconds then scrolling the verse out of sight will grab a new random verse from anywhere in the
+              This Bible verse is being randomy generated with The Bible API from <span>https://scripture.api.bible/</span>. The API calls are being made utilizing <div className="thunk">Redux
+              Thunk</div>, the response is then stored in this applications global state. Wating 5 seconds then scrolling the verse out of sight will grab a new random verse from anywhere in the
               KJV of the Bible!
             </div>
             <motion.div 
@@ -292,10 +293,9 @@ function BaseLayout(props : {children: JSX.Element}) {
             animate={quoteInView ? "inView" : "outView"}
             transition={{
               type: 'spring',
-              ease: 'linear',
               delay: 0.3,
               duartion: 2
-            }}>
+            } as any}>
             {parsedQuote.quoteName ? 
             <>
               <h3>{parsedQuote.quoteName}:</h3>
