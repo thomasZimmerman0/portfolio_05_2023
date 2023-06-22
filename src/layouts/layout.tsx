@@ -12,6 +12,7 @@ import { changeHeader } from '../slices/headerSlice';
 import { fetchQuote } from '../slices/bibleSlice';
 
 import { useRef, useEffect, MutableRefObject, useState } from 'react';
+import { useLocation } from 'react-router-dom'
 import { motion, useScroll,  useTransform, useInView } from "framer-motion";
 
 import { 
@@ -21,6 +22,7 @@ import {
 
 function BaseLayout(props : {children: JSX.Element}) {
   const dispatch = useAppDispatch();
+  const location = useLocation()
   /*Redux useSelector and dispatch to make changes to state and get the page state so different styles can
   be applied depending on the selected state. */
   const pageState: string = useAppSelector((state) => state.header.value);
@@ -64,21 +66,16 @@ function BaseLayout(props : {children: JSX.Element}) {
   //more Framer Motion
   const quoteInView = useInView(quoteRef);
   useEffect(()=>{
-
-    /*Dispatch fetchQuote to set the state to a random bible quote using the bible API
-    It was necessary to throw the dispatch in a use effect so it doesn't run more than once per
-    page load. 
-    
-    (This is no longer necessary because dispatch fetch quote gets called when the quote is in view,
-     but I'll leve the comments here from reference)*/
-
-    // dispatch(fetchQuote());
-
+    /*Dispatch to header state to ensure if a user is on a sperate page 
+    that isn't the home page, the state will still be set correctly
+    location is a react router dom hook that holds "/skills" for example, / needs to be removed which
+    is why slice is invoked */
+    dispatch(changeHeader(location.pathname.slice(1)))
     /*IntersectionObserver Object that is going to observe the Ref to the initial header when
     When the users view is intersecting with the initial header ( which is being stored in Ref )
     then the headerOneVisible state gets set to true. This allows me to know weather or not to render
     the second header down in the JSX */
-    const observer = new IntersectionObserver((entries, observer)=>{
+    const observer = new IntersectionObserver((entries)=>{
       const entry: any = entries[0];
       setHeaderOneVisible(entry.isIntersecting);
     });

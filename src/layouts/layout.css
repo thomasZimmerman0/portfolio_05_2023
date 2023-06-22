@@ -4,7 +4,6 @@
 }
 @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Imbue:wght@600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap');
 
 body{
     background-attachment: fixed; 
@@ -32,6 +31,7 @@ header {
     margin-bottom: 50vh;
     z-index: 2;
     overflow: hidden;
+    border-bottom: solid red 2px;
 }
 
 header h2{
@@ -308,6 +308,7 @@ header ul li a {
 
 .parallax{
     height: 35vh;
+    border-top: solid rgb(255, 255, 255) 5px;
     min-width: 100%;
     background-image: url("https://wallpaperaccess.com/full/338765.jpg");
     background-attachment: fixed;
@@ -376,7 +377,7 @@ header ul li a {
     margin: 10px auto 10px auto;
     height: 30%;
     width: 50%;
-    padding: 1% 2% 1.5% 2%;
+    padding: 0.5% 2% 0.5% 2%;
     align-self: center;
     border-radius: 200px;
     box-shadow: 1px 1px 25px 5px rgb(159, 159, 159);
@@ -582,15 +583,6 @@ footer .img-cont p{
     .verse-cont p{
         flex-grow:2;
     }
-    /* .parallax-opacity-layer h2{
-        font-size: 25px;
-    }
-    .verse-cont h3{
-        font-size: 20px;
-    }
-    .verse-cont p{
-        font-size: 16px
-    } */
 }
 
 @media (max-width: 600px){
