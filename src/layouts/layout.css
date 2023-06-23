@@ -307,7 +307,7 @@ header ul li a {
 }
 
 .parallax{
-    height: 35vh;
+    height: auto;;
     border-top: solid rgb(255, 255, 255) 5px;
     border-radius: 300px 300px / 100px 100px 0 0;
     min-width: 100%;
@@ -329,6 +329,7 @@ header ul li a {
     border-radius: 300px 300px 0 0 / 100px 100px 0 0;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
     padding: 2%;
     height: 100%;
     width: 100%;
@@ -368,7 +369,10 @@ header ul li a {
 }
 
 .verse-cont {
-    flex-grow: 2;
+    box-sizing: border-box;
+    height: 20vh;
+    width: 90%;
+    margin: 2% 10%;
     display: flex;
     justify-content: center;
 }
@@ -376,7 +380,7 @@ header ul li a {
 .parallax-opacity-layer h2 {
     flex-grow: 1;
     box-sizing: border-box;
-    margin: 10px auto 10px auto;
+    margin: 2%;
     height: 30%;
     width: 50%;
     padding: 0.5% 2% 0.5% 2%;
@@ -393,14 +397,15 @@ header ul li a {
 
 .verse-cont h3,
 .verse-cont p {
+    display: block;
     margin: auto 0 auto 0;
     font-weight: lighter;
     font-family: 'Oxanium';
     color: white;
 }
 .parallax-opacity-layer h3{
-    margin: auto 0 auto auto;
-    flex-grow: 1;
+    box-sizing: border-box;
+    width: 20%;
     text-align: center;
     word-wrap: normal;
     text-decoration: underline;
@@ -408,7 +413,7 @@ header ul li a {
 }
 
 .parallax-opacity-layer p{
-    width: 80%;
+    width: auto;
     text-align: center;
     margin-left: 1%;
     margin-right: 1%;
@@ -482,7 +487,7 @@ footer .img-cont p{
 
 @media (min-width: 1700px){
     .verse-cont h3{
-        font-size: 35px;
+        font-size: 40px;
     }
     .verse-cont p{
         font-size: 30px
@@ -499,6 +504,14 @@ footer .img-cont p{
 @media (max-width: 1212px){
     .parallax-opacity-layer h2{
         font-size: 35px;
+    }
+    .parallax-opacity-layer h2{
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        padding: 0px;
+        max-height: 60px;
+        width: 75%;
     }
 }
 
@@ -519,15 +532,6 @@ footer .img-cont p{
     .background-video{
         height: 250%;
         top: -35vh;
-    }
-    .parallax-opacity-layer h2{
-        font-size: 30px;
-    }
-    .verse-cont h3{
-        font-size: 24px;
-    }
-    .verse-cont p{
-        font-size: 20px
     }
 }
 
@@ -570,17 +574,18 @@ footer .img-cont p{
     .quote-explain {
         width: 200px;
     }
+    .parallax-opacity-layer h2{
+        margin: 10%;
+    }
 }
 
 @media (max-width: 720px){
 
     .verse-cont{
+        height: auto;
         flex-direction: column;
         align-items: center;
-    }
-    .parallax-opacity-layer h2{
-        width: 75%;
-        padding: 4%;
+        margin: 15%;
     }
     .verse-cont h3, .verse-cont p{
         display: flex;
@@ -588,7 +593,8 @@ footer .img-cont p{
         margin: 0;
     }
     .verse-cont h3{
-        flex-grow: 1;
+        width: 100%;
+        margin-bottom: 50px;
         align-items: center;
     }
     .verse-cont p{
@@ -604,6 +610,10 @@ footer .img-cont p{
         justify-content: center;
         align-items: center;
     }
+    .parallax-opacity-layer h2{
+        min-height: 100px;
+        padding: 5%;
+    }
     footer .img-cont div p{
         font-size: 18px;
     }
@@ -618,10 +628,17 @@ footer .img-cont p{
         word-wrap: break-word;
         font-size: 12px;
     }
-    .parallax-opacity-layer h2{
-        font-size: 22px;
+    .parallax-opacity-layer{
+        height: auto;
     }
-
+    .parallax-opacity-layer h2{
+        min-height: 200px;
+        height: auto
+    }
+    .verse-cont h3,.verse-cont p{
+        word-wrap: break-word;
+        height: auto;
+    }
     footer{
         height: 40%;
     }
