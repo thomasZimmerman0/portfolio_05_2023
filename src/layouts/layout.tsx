@@ -70,7 +70,9 @@ function BaseLayout(props : {children: JSX.Element}) {
     that isn't the home page, the state will still be set correctly
     location is a react router dom hook that holds "/skills" for example, / needs to be removed which
     is why slice is invoked */
-    dispatch(changeHeader(location.pathname.slice(1)))
+    let setHeaderState = ""
+    location.pathname === "/" ?  setHeaderState = "home" : setHeaderState = location.pathname.slice(1);
+    dispatch(changeHeader(setHeaderState))
     /*IntersectionObserver Object that is going to observe the Ref to the initial header when
     When the users view is intersecting with the initial header ( which is being stored in Ref )
     then the headerOneVisible state gets set to true. This allows me to know weather or not to render
@@ -80,7 +82,7 @@ function BaseLayout(props : {children: JSX.Element}) {
       setHeaderOneVisible(entry.isIntersecting);
     });
     observer.observe(headerRef.current)
-  },[dispatch])
+  },[dispatch, location.pathname])
   useEffect(()=>{
     let parseQuote = (quote: string): string =>{
       let strsToParse = ['<span class="add">','¶','ss="mt1">','<span class="nd">','</span>','<span class="wj">', '</p><p class="q1"><span data-number="1" data-sid="PSA 26:1" class="v">']
