@@ -309,6 +309,7 @@ header ul li a {
 .parallax{
     height: 35vh;
     border-top: solid rgb(255, 255, 255) 5px;
+    border-radius: 300px 300px / 100px 100px 0 0;
     min-width: 100%;
     background-image: url("https://wallpaperaccess.com/full/338765.jpg");
     background-attachment: fixed;
@@ -325,6 +326,7 @@ header ul li a {
 .parallax-opacity-layer{
     display: flex;
     box-sizing: border-box;
+    border-radius: 300px 300px 0 0 / 100px 100px 0 0;
     flex-direction: column;
     justify-content: space-around;
     padding: 2%;
@@ -476,6 +478,15 @@ footer .img-cont p{
     font-size: 1.4rem;
     cursor: default;
     font-family:'Oxanium', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@media (min-width: 1700px){
+    .verse-cont h3{
+        font-size: 35px;
+    }
+    .verse-cont p{
+        font-size: 30px
+    }
 }
 
 @media (max-width: 1300px){

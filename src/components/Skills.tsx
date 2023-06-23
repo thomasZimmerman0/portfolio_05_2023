@@ -1,7 +1,7 @@
 import './css/Skills.css';
-import images from '../assets/importImgs';
+import skillData from '../assets/importSkills';
 
-import { skillsImages } from '../interfaces/interfaces'
+import { SkillInfo } from '../interfaces/interfaces';
 import { useAppSelector, useAppDispatch } from '../app/hooks';
 
 import { useRef, useEffect, MutableRefObject, useState } from 'react';
@@ -13,34 +13,37 @@ import {
 } from 'react-router-dom'
 
 function Skills() {
-  const [imageArr, setImageArr] = useState<any[]>([])
-  const [selected, ] = useState<{
-    image : string,
-    description: string, 
-    name: string,
-    link: string,
-  } | {}>({})
-  useEffect(()=>{
-    for(let image in images){
-      setImageArr((prevState)=>{
-        return [...prevState, {skillName: image, img: images[image as keyof skillsImages]}]
+  const modalRef: MutableRefObject<any> = useRef()
+  const [modalInfo, setModalInfo] = useState<SkillInfo>({
+    skillName: "",
+    image: "",
+    description: "",
+    Link: "",
+  }) 
+  let presentModal = ( skill: SkillInfo) =>{
+    let modal = modalRef.current
+    console.log(modal.style.display);
+    if(modal.style.display === "none" || modal.style.display === ""){
+      modal.style.display = "block"
+      setModalInfo({
+        skillName: skill.skillName,
+        image: skill.image,
+        description: skill.description,
+        Link: skill.Link
       })
-    }
-  },[])
-  let presentModal = (e: any) =>{
-    if(e.target.nodeName == "IMG"){
-      console.log(e.target.parentElement)
+    } else {
+      modal.style.display = "none"
     }
   }
   return (
     <>
         <div className="main-container">
-          { imageArr.map((element)=>{
+          { skillData.map((skill)=>{
             return <motion.div
-            key={element.skillName}
-            id={element.skillName}
+            key={skill.skillName}
+            id={skill.skillName}
             className="skill-container"
-            onClick={(e)=>presentModal(e)}
+            onClick={()=>presentModal( skill)}
             whileHover={{
               scale: 1.2,
               transition: {
@@ -53,14 +56,20 @@ function Skills() {
             }}
             >
               <div className="image-container">
-              <h2>{element.skillName.toUpperCase()}</h2>
-              <img src={element.img} />
+              <h2>{skill.skillName.toUpperCase()}</h2>
+              <img src={skill.image} alt={skill.skillName}/>
               </div>
             </motion.div>
           })}
         </div>
-        <div className="modal">
+        <div className="modal" ref={modalRef}>
           <div className="modal-content-box">
+            <h2>{modalInfo.skillName}</h2>
+            <div className="image-link-cont">
+              <img src={modalInfo.image} alt={modalInfo.skillName}/>
+              <a href={modalInfo.Link} target="_blank" rel="noreferrer">{modalInfo.Link}</a>
+            </div>
+            <p>{modalInfo.description}</p>
           </div>
         </div>
     </>

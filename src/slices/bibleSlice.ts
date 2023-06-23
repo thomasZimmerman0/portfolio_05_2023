@@ -36,11 +36,11 @@ let callAPI = async(type: string, reqHeader: HeadersInit, id?: string) =>{
 
 export const fetchQuote = createAsyncThunk('bible/fetchQuote', async()=>{
   const requestHeaders: HeadersInit = new Headers();
+  requestHeaders.set('api-key', process.env.REACT_APP_BIBLE_API!);
   const setBibleQuote : BibleStateBuilder = {
     quote: "",
     quoteName: ""
   }
-  requestHeaders.set('api-key', process.env.REACT_APP_BIBLE_API!);
   const book = await callAPI('getBooks', requestHeaders) as Book;
   const chapter = await callAPI('getChapters', requestHeaders, book.id) as Chapter;
   const verse = await callAPI('getVerses', requestHeaders, chapter.id) as Verse;

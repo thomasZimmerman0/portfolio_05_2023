@@ -47,34 +47,9 @@ export interface BibleStateBuilder {
   quoteName: string;
 }
 
-export interface skillsImages {
-  javascript: string;
-  typescript: string;
-  css: string;
-  ajax: string;
-  angular: string;
-  cProgLang: string;
-  cli: string;
-  cloudinary: string;
-  express: string;
-  firebase: string;
-  framerMotion: string;
-  github: string;
-  gsuite: string;
-  html: string;
-  java: string;
-  microsoftOffice: string;
-  mySQL: string;
-  node: string;
-  oAuth: string;
-  passport: string;
-  php: string;
-  postgresql: string;
-  python: string;
-  react: string;
-  redux: string;
-  restAPI: string;
-  sequelize: string;
-  vscode: string;
-  wordpress: string;
+export interface SkillInfo {
+  skillName: string,
+  image: string,
+  description: string,
+  Link: string  
 }
