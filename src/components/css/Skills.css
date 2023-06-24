@@ -1,13 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 .main-container{
-    margin: 10% auto;
-    background-color: rgb(38, 38, 38);
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: space-evenly;
     height: auto;
-    width:80%;
+    margin: 5% 0;
+}
+.skills-explain{
+    background-color: rgb(113, 0, 0);
+    border-top: solid rgb(204, 204, 204) 20px;
+    border-bottom: solid rgb(204, 204, 204) 20px;
+    border-left: solid rgb(255, 255, 255) 20px;
+    border-right: solid rgb(255, 255, 255) 20px;
+    box-shadow:0px 0px 20px 5px rgb(0, 0, 0) inset;
+    display: flex;
+    height: 75vh;
+    width: 25%;
+}
+
+.skills-explain h2{
+    font-size: 50px;
+    width: 100%;
+    font-family: 'Bebas Neue';
+    text-align: center;
+    color: white;
+    text-decoration: underline;
+}
+
+.skills-container{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    height: 75vh;
+    width: 60%;
+    overflow-y: scroll;
     border-top: solid rgb(93, 0, 0) 20px;
     border-bottom: solid rgb(93, 0, 0) 20px;
     border-left: solid rgb(169, 0, 0) 20px;
@@ -53,24 +79,54 @@
     left: 0;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
     z-index: 1;
 }
 
 .modal-content-box {
     box-sizing: border-box;
-    padding: 2%;
+    position: relative;
     display: flex;
+    align-items:start;
     flex-wrap: wrap;
+    align-content: flex-start;
+    padding: 2%;
     margin: auto;
     margin-top: 200px;
     height: 70vh;
     width: 60%;
-    border-top:rgb(0, 0, 0) solid 50px;;
-    border-right: rgb(40, 40, 40) solid 50px;
-    border-left: rgb(57, 57, 57) solid 50px;
-    border-bottom: rgb(0, 0, 0) solid 50px;
-    background-color: white;
+    border-radius: 5px;
+    border-top:rgb(255, 255, 255) solid 50px;;
+    border-right: rgb(202, 202, 202) solid 50px;
+    border-left: rgb(202, 202, 202) solid 50px;
+    border-bottom: rgb(255, 255, 255) solid 50px;
+    background-color: rgb(0, 0, 0);
+}
+
+.x-box{
+    margin-left: auto;
+    position: relative;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+}
+
+.x-one, .x-two{
+    position: absolute;
+    top:0;
+    left: 50%;
+    width: 5px;;
+    height: 50px;
+    background-color: rgb(255, 255, 255);
+
+}
+
+.x-one{
+    transform: rotate(45deg);
+}
+
+.x-two{
+    transform: rotate(-45deg);
 }
 
 .image-link-cont{
@@ -80,17 +136,21 @@
     width: 50%
 }
 
-.modal-content-box p {
-    width: 50%;
-}
-
 .modal-content-box h2{
     width: 100%;
+    margin-top: 0;
     text-align: center;
+    color: white;
     font-size: 50px;
     font-family: "Bebas Neue";
     font-weight: 800;
 }
+
+.modal-content-box p {
+    color: white;
+    width: 50%;
+}
+
 
 .modal-content-box img{
     height: 500px;

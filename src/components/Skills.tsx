@@ -6,13 +6,8 @@ import { useAppSelector, useAppDispatch } from '../app/hooks';
 
 import { useRef, useEffect, MutableRefObject, useState } from 'react';
 import { motion, useScroll,  useTransform, useInView } from "framer-motion";
-
-import { 
-  Link,
-  ScrollRestoration
-} from 'react-router-dom'
-
 function Skills() {
+  //Modal hooks
   const modalRef: MutableRefObject<any> = useRef()
   const [modalInfo, setModalInfo] = useState<SkillInfo>({
     skillName: "",
@@ -20,24 +15,33 @@ function Skills() {
     description: "",
     Link: "",
   }) 
+  // Logic for spinning close button
+  const [mouseOverX, setMouseOverX] = useState<boolean>(false)
+  const mouseOverXVariants  ={
+    mouseOver: {
+      rotate: [0, 360]
+    },
+    mouseOff:{
+      rotate: [360, 0]
+    } 
+  }
   let presentModal = ( skill: SkillInfo) =>{
     let modal = modalRef.current
-    console.log(modal.style.display);
     if(modal.style.display === "none" || modal.style.display === ""){
       modal.style.display = "block"
-      setModalInfo({
-        skillName: skill.skillName,
-        image: skill.image,
-        description: skill.description,
-        Link: skill.Link
-      })
+      setModalInfo(skill)
     } else {
       modal.style.display = "none"
     }
   }
   return (
     <>
-        <div className="main-container">
+    <div className="main-container">
+        <div className="skills-explain">
+          <h2>Skills</h2>
+          <p></p>
+        </div>
+        <div className="skills-container">
           { skillData.map((skill)=>{
             return <motion.div
             key={skill.skillName}
@@ -63,15 +67,37 @@ function Skills() {
           })}
         </div>
         <div className="modal" ref={modalRef}>
-          <div className="modal-content-box">
+          <motion.div className="modal-content-box"
+          // whileHover={{: [360, 0],
+          //             transition: {
+          //               duration: 3
+          //             }}}
+          >
+            <motion.div className="x-box"
+            onMouseEnter={()=>setMouseOverX(true)}
+            onMouseLeave={()=>setMouseOverX(false)}
+            onClick={()=>presentModal(modalInfo)}
+            animate={mouseOverX ? "mouseOver" : "mouseOff"}
+            transition={{
+              type: "spring",
+              stiffness: 50,
+              ease: "easeIn",
+              duration: 1
+            }}
+            variants={mouseOverXVariants}
+            >
+              <div className="x-one"></div>
+              <div className="x-two"></div>
+            </motion.div>
             <h2>{modalInfo.skillName}</h2>
             <div className="image-link-cont">
               <img src={modalInfo.image} alt={modalInfo.skillName}/>
               <a href={modalInfo.Link} target="_blank" rel="noreferrer">{modalInfo.Link}</a>
             </div>
             <p>{modalInfo.description}</p>
-          </div>
+          </motion.div>
         </div>
+    </div>
     </>
   );
 }
