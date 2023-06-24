@@ -25,13 +25,35 @@ function Skills() {
       rotate: [360, 0]
     } 
   }
+  // Logic for flipping modal content box
+  const [modalDisplayed, setModalDisplayed] = useState<boolean>(false)
+  const modalFlip = {
+    notDisplayed: {},
+    displayed : {
+      rotateY: ["180deg", "0deg"],
+    transition:{
+      ease: "easeIn",
+      duration: 0.5
+    }}
+  }
+  //displaying modal function
   let presentModal = ( skill: SkillInfo) =>{
     let modal = modalRef.current
     if(modal.style.display === "none" || modal.style.display === ""){
       modal.style.display = "block"
-      setModalInfo(skill)
+      setTimeout(()=>{
+        setModalInfo(skill)
+      },400)
+      setModalDisplayed(true)
     } else {
       modal.style.display = "none"
+      setModalInfo({
+        skillName: "",
+        image: "",
+        description: "",
+        Link: "",
+      })
+      setModalDisplayed(false)
     }
   }
   return (
@@ -68,10 +90,8 @@ function Skills() {
         </div>
         <div className="modal" ref={modalRef}>
           <motion.div className="modal-content-box"
-          // whileHover={{: [360, 0],
-          //             transition: {
-          //               duration: 3
-          //             }}}
+          animate={modalDisplayed ? "displayed" : "notDisplayed"}
+          variants={modalFlip}
           >
             <motion.div className="x-box"
             onMouseEnter={()=>setMouseOverX(true)}
