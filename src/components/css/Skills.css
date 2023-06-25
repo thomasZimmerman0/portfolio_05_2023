@@ -3,7 +3,7 @@
 
 
 h1{
-    margin: 0 auto;
+    margin: auto;
     width: 50%;
     text-align: center;
     font-size: 120px;
@@ -38,6 +38,8 @@ h1{
 
 .skills-explain h2{
     width: 100%;
+    margin:0;
+    margin-bottom: 35px;
     font-family: 'Bebas Neue';
     font-size: 50px;
     text-align: center;
@@ -134,8 +136,8 @@ h1{
     padding: 2%;
     margin: auto;
     margin-top: 200px;
-    height: 70vh;
-    width: 60%;
+    height: 1100px;
+    width: 1800px;
     border-radius: 5px;
     border-top:rgb(255, 255, 255) solid 50px;;
     border-right: rgb(202, 202, 202) solid 50px;
@@ -171,8 +173,9 @@ h1{
 }
 
 .image-link-cont{
-    height: auto;
+    height: 70%;
     display: flex;
+    justify-content: space-around;
     flex-direction: column;
     width: 500px;
 }
@@ -190,11 +193,12 @@ h1{
 }
 
 .modal-content-box p {
+    box-sizing: border-box;
     margin-top: 0;
     border: solid white 5px;
     padding: 60px;
     padding-top: 30px;
-    max-height: 60%;
+    max-height: 70%;
     width: 40%;
     border-radius: 25px;
     background-color: rgb(57, 57, 57);
@@ -224,6 +228,7 @@ h1{
 .modal-content-box img{
     height: 500px;
     width: 500px;
+    object-fit: cover;
 }
 
 .modal-content-box a {
@@ -231,7 +236,23 @@ h1{
     text-decoration: none;
     color: white;
     text-align:center;
+    word-wrap: break-word;
     font-size: 30px;
+}
+
+.modal-content-box a:hover {
+    animation-name: change-link-color-forward;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes change-link-color-forward {
+    from{
+        color: white;
+    }
+    to{
+        color: rgb(0, 123, 255);
+    }
 }
 
 @media (max-width: 2155px){
@@ -262,7 +283,7 @@ h1{
     }
 }
 
-@media (max-width: 1000px){
+@media (max-width: 1025px){
     .skill-container{
         height: 240px;
         width: 200px;
@@ -285,7 +306,253 @@ h1{
 }
 
 @media (max-width: 900px){
+    .main-container{
+        margin-top: 0;
+    }
+    .skills-explain{
+        margin: 9% auto;
+    }
     .skills-explain p{
        padding: 2%;
+    }
+    .skills-container{
+        height: 80vh;
+    }
+    .skill-container{
+        height: 320px;
+        width: 300px;
+    }
+    .image-container{
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+    }
+    .skill-container img{
+        width: 250px;
+        height: 250px;
+        object-fit: contain;
+    }
+}
+
+@media (max-width: 600px){
+    h1{
+        margin-top: 125%;
+        font-size: 80px;
+    }
+    .skills-explain h2{
+        font-size: 30px;
+    }
+    .skills-explain p{
+        padding: 4%;
+        font-size: 18px!important;
+    }
+    .skills-container{
+        margin: 7% auto;
+    }
+    .skill-container{
+        height: 270px;
+        width: 250px;
+        margin-bottom: 75px;
+    }
+    .skill-container img{
+        width: 190px;
+        height: 190px;
+    }
+}
+
+@media (max-width: 400px){
+    h1{
+        font-size: 60px;
+    }
+    .skills-explain p{
+        font-size: 16px!important;
+        font-weight: 900;
+        padding: 8%;
+    }
+    .skill-container{
+        height: 180px;
+        width: 180px;
+    }
+    .image-container{
+        justify-content: start;
+    }
+    .skill-container h2{
+        font-size: 16px;
+    }
+    .skill-container img{
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-height: 1000px){
+    .skills-explain p{
+        font-size: 20px;
+    }
+}
+@media (max-height: 810px){
+    .skills-explain p{
+        font-size: 16px;
+    }
+    .skills-explain h2{
+        font-size: 30px;
+    }
+}
+@media (max-height: 625px){
+    .skills-explain{
+        overflow-y: scroll
+    }
+}
+
+@media (max-width: 1900px) or (max-height: 1300px){
+    .image-link-cont{
+        align-items: center;
+    }
+    .image-link-cont img{
+        height: 400px;
+        width: 400px
+    }
+    .modal-content-box{
+        width: 1600px;
+        height: 900px;
+    }
+}
+@media (max-width: 1635px) or (max-height: 1200px){
+    .image-link-cont{
+        align-items: center;
+    }
+    .image-link-cont img{
+        height: 200px;
+        width: 200px
+    }
+    .modal-content-box p{
+        max-height: 60%;
+        font-size: 20px;
+    }
+    .modal-content-box{
+        margin-top: 200px;
+        width: 1300px;
+        height: 700px;
+    }
+}
+@media (max-width: 1340px) or (max-height: 900px){
+    .image-link-cont{
+        width: 40%;
+        height: 50%;
+    }
+    .image-link-cont img{
+        height: 150px;
+        width: 150px
+    }
+    .image-link-cont a{
+        font-size: 23px
+    }
+    .modal-content-box p{
+        max-height: 50%;
+    }
+    .modal-content-box{
+        width: 1000px;
+        height: 600px;
+    }
+}
+@media (max-width: 1039px) or (max-height: 817px){
+    .x-box{
+        height: 25px;
+        width: 25px;
+    }
+    .x-one,.x-two{
+        height: 25px;
+    }
+    .image-link-cont{
+        height: 60%;
+    }
+    .image-link-cont img{
+        height: 75px;
+        width: 75px
+    }
+    .image-link-cont a{
+        max-width: 100%;
+        font-size: 23px
+    }
+    .modal-content-box p{
+        max-height: 60%;
+        padding: 2%;
+        font-size: 18px;
+    }
+    .modal-content-box h2{
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    .modal-content-box{
+        width: 700px;
+        height: 400px;
+        border-width: 30px;
+    }
+}
+
+@media (max-width: 725px){
+    .modal-content-box{
+        width: 80%;
+        height: 75vh;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        padding: 3%;
+    }
+    .card-back{
+        background-image: url('../../assets/cardback-rightsideup.jpg');
+    }
+    .image-link-cont{
+        height: auto;
+        width: 100%;
+    }
+    .modal-content-box p{
+        width: 80%;
+        max-height: 60%;
+    }
+}
+@media (max-width: 615px){
+    .modal-content-box{
+        height: 65vh;
+    }
+}
+@media (max-width: 615px) {
+    .modal-content-box{
+        height: 55vh;
+    }
+    .image-link-cont a{
+        font-size: 18px;
+    }
+    .modal-content-box p{
+        font-size: 16px;
+        overflow-x: hidden;
+        max-height: 40%;
+    }
+    .image-link-cont{
+        max-height: 20%;
+    }
+}
+
+@media (max-height: 900px) and (max-width:725px){
+    .modal-content-box h2{
+        margin-bottom: 0px;
+    }
+    .image-link-cont img{
+        display: none;
+    }
+}
+
+@media (max-height: 836px) and (max-width:725px){
+    .image-link-cont a{
+        font-size: 14px;
+    }
+    .modal-content-box p{
+        font-size: 14px;
+    }
+}
+
+@media (max-height: 870px){
+    .modal-content-box{
+        height: 65vh;
     }
 }

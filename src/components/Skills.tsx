@@ -6,7 +6,23 @@ import { useAppSelector, useAppDispatch } from '../app/hooks';
 
 import { useRef, useEffect, MutableRefObject, useState } from 'react';
 import { motion, useScroll,  useTransform, useInView } from "framer-motion";
-function Skills() {
+function Skills(props : { headerRef: MutableRefObject<any> } | {}) {
+  //Header Logic
+  const placeholderRef : MutableRefObject<any> = useRef();
+  const [headerRef, setHeaderRef] = useState<MutableRefObject<any>>(placeholderRef)
+  const isInView = useInView(headerRef);
+  useEffect(()=>{
+    if(Object.keys(props).includes('headerRef')){
+      let prop : { headerRef: MutableRefObject<any> } = props as { headerRef: MutableRefObject<any> }
+      let headerRefInst = prop.headerRef
+      setHeaderRef(headerRefInst)
+    }
+  },[props])
+  useEffect(()=>{
+    modalRef.current.style.display = "none"
+    cardBack.current.style.display = ""
+    setModalDisplayed(false)
+  },[isInView])
   //Modal hooks
   const modalRef: MutableRefObject<any> = useRef()
   const [modalInfo, setModalInfo] = useState<SkillInfo>({
@@ -47,8 +63,8 @@ function Skills() {
     let modal = modalRef.current
     if(modal.style.display === "none" || modal.style.display === ""){
       modal.style.display = "block"
+      setModalInfo(skill)
       setTimeout(()=>{
-        setModalInfo(skill)
         cardBack.current.style.display = "none";
       },300)
       setModalDisplayed(true)
@@ -56,12 +72,6 @@ function Skills() {
       setModalDisplayed(false)
       setTimeout(()=>{
         cardBack.current.style.display = ""
-        setModalInfo({
-          skillName: "",
-          image: "",
-          description: "",
-          Link: "",
-        })
       },300)
       setTimeout(()=>{
         modal.style.display = "none"
