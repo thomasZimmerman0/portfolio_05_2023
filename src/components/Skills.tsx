@@ -19,16 +19,22 @@ function Skills() {
   const [mouseOverX, setMouseOverX] = useState<boolean>(false)
   const mouseOverXVariants  ={
     mouseOver: {
-      rotate: [0, 360]
+      rotate: [0, 180]
     },
     mouseOff:{
-      rotate: [360, 0]
+      rotate: [180, 0]
     } 
   }
   // Logic for flipping modal content box
+  const cardBack: MutableRefObject<any> = useRef(); 
   const [modalDisplayed, setModalDisplayed] = useState<boolean>(false)
   const modalFlip = {
-    notDisplayed: {},
+    notDisplayed: {
+      rotateY: ["0deg", "180deg"],
+    transition:{
+      ease: "easeIn",
+      duration: 0.5
+    }},
     displayed : {
       rotateY: ["180deg", "0deg"],
     transition:{
@@ -43,25 +49,40 @@ function Skills() {
       modal.style.display = "block"
       setTimeout(()=>{
         setModalInfo(skill)
-      },400)
+        cardBack.current.style.display = "none";
+      },300)
       setModalDisplayed(true)
     } else {
-      modal.style.display = "none"
-      setModalInfo({
-        skillName: "",
-        image: "",
-        description: "",
-        Link: "",
-      })
       setModalDisplayed(false)
+      setTimeout(()=>{
+        cardBack.current.style.display = ""
+        setModalInfo({
+          skillName: "",
+          image: "",
+          description: "",
+          Link: "",
+        })
+      },300)
+      setTimeout(()=>{
+        modal.style.display = "none"
+      },800)
     }
   }
   return (
     <>
+    <h1>SKILLS</h1>
     <div className="main-container">
         <div className="skills-explain">
-          <h2>Skills</h2>
-          <p></p>
+          <h2>Explanation</h2>
+          <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;This is an interactive collection of the most prevelant and powerful technincal application development tools that I have learned and practiced with over the years. Most of these skills are heavily tied to website development; my confidence in delivering masterful products with every tool lister here is enormously high. 
+          </p>
+          <p>
+            &nbsp;&nbsp;&nbsp;&nbsp; The current interactive display is not reflective of all of my abilites. Please downlad my resume from the footer and give it a read to find out more!
+          </p>
+          <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;If you are unfarmiliar with any one of these tools, click on one to display a card that contains a short description, as well as a link to more information, or the offical website for the tool.    
+          </p>
         </div>
         <div className="skills-container">
           { skillData.map((skill)=>{
@@ -93,6 +114,7 @@ function Skills() {
           animate={modalDisplayed ? "displayed" : "notDisplayed"}
           variants={modalFlip}
           >
+            <div ref={cardBack} className="card-back"></div>
             <motion.div className="x-box"
             onMouseEnter={()=>setMouseOverX(true)}
             onMouseLeave={()=>setMouseOverX(false)}
@@ -112,7 +134,16 @@ function Skills() {
             <h2>{modalInfo.skillName}</h2>
             <div className="image-link-cont">
               <img src={modalInfo.image} alt={modalInfo.skillName}/>
-              <a href={modalInfo.Link} target="_blank" rel="noreferrer">{modalInfo.Link}</a>
+              <motion.a href={modalInfo.Link} target="_blank" rel="noreferrer"
+              whileHover={{
+                scale : 1.05,
+                transition: {
+                  type: "spirng"
+                }
+              }}
+              >
+                {modalInfo.Link}
+              </motion.a>
             </div>
             <p>{modalInfo.description}</p>
           </motion.div>

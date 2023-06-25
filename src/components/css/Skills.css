@@ -1,5 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Graduate&display=swap');
 
+
+h1{
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+    font-size: 120px;
+    border-radius: 100px;
+    background-position-x: left;
+    background-position-y: bottom;
+    background-size: cover;
+    background-image: url("../../assets/porcelin.jpg");
+    color: rgb(253, 0, 0);
+    font-family: "Graduate";
+}
 .main-container{
     display: flex;
     justify-content: space-evenly;
@@ -7,30 +22,43 @@
     margin: 5% 0;
 }
 .skills-explain{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 2%;
+    height: 75vh;
+    width: 25%;
     background-color: rgb(113, 0, 0);
     border-top: solid rgb(204, 204, 204) 20px;
     border-bottom: solid rgb(204, 204, 204) 20px;
     border-left: solid rgb(255, 255, 255) 20px;
     border-right: solid rgb(255, 255, 255) 20px;
     box-shadow:0px 0px 20px 5px rgb(0, 0, 0) inset;
-    display: flex;
-    height: 75vh;
-    width: 25%;
 }
 
 .skills-explain h2{
-    font-size: 50px;
     width: 100%;
     font-family: 'Bebas Neue';
+    font-size: 50px;
     text-align: center;
     color: white;
     text-decoration: underline;
+}
+
+.skills-explain p{
+    font-size: 24px;
+    font-family: "Oxanium";
+    color: white;
+    margin: 0;
+    padding: 3%;
 }
 
 .skills-container{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    box-sizing: border-box;
+    padding: 2%;
     height: 75vh;
     width: 60%;
     overflow-y: scroll;
@@ -83,6 +111,18 @@
     z-index: 1;
 }
 
+.card-back{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../../assets/cardback.jpg");
+}
+
 .modal-content-box {
     box-sizing: border-box;
     position: relative;
@@ -90,6 +130,7 @@
     align-items:start;
     flex-wrap: wrap;
     align-content: flex-start;
+    justify-content: space-around;
     padding: 2%;
     margin: auto;
     margin-top: 200px;
@@ -101,6 +142,7 @@
     border-left: rgb(202, 202, 202) solid 50px;
     border-bottom: rgb(255, 255, 255) solid 50px;
     background-color: rgb(0, 0, 0);
+    font-family: "Oxanium"
 }
 
 .x-box{
@@ -118,7 +160,6 @@
     width: 5px;;
     height: 50px;
     background-color: rgb(255, 255, 255);
-
 }
 
 .x-one{
@@ -133,12 +174,14 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    width: 50%
+    width: 500px;
 }
 
 .modal-content-box h2{
     width: 100%;
     margin-top: 0;
+    margin-bottom: 50px;
+    border-bottom: 3px solid white;
     text-align: center;
     color: white;
     font-size: 50px;
@@ -147,12 +190,102 @@
 }
 
 .modal-content-box p {
+    margin-top: 0;
+    border: solid white 5px;
+    padding: 60px;
+    padding-top: 30px;
+    max-height: 60%;
+    width: 40%;
+    border-radius: 25px;
+    background-color: rgb(57, 57, 57);
     color: white;
-    width: 50%;
+    font-size: 30px;
+    overflow-y: scroll;
 }
 
+.modal-content-box p::-webkit-scrollbar{
+    width: 20px;
+    padding: 20%;
+    border-radius: 25px;
+    background-color: rgba(0,0,0,0);
+}
+.modal-content-box p::-webkit-scrollbar-track{
+    margin: 20px;
+}
+
+.modal-content-box p::-webkit-scrollbar-thumb {
+   margin: 10%;
+   border-radius: 1000px;
+   background-color: rgb(255, 255, 255);
+   border: solid black 3px;
+   box-shadow: 0px 0px 6px 1px rgb(0, 0, 0) inset;
+}
 
 .modal-content-box img{
     height: 500px;
     width: 500px;
+}
+
+.modal-content-box a {
+    margin-top: 20px;
+    text-decoration: none;
+    color: white;
+    text-align:center;
+    font-size: 30px;
+}
+
+@media (max-width: 2155px){
+    .main-container{
+        flex-direction: column;
+        align-items: center;
+    }
+    .skills-explain{
+        width: 80%;
+        height: 10%;
+        margin-bottom: 2%;
+    }
+    .skills-explain p{
+        padding: 1%;
+    }
+    .skills-explain h2{
+        margin: 1%;
+    }
+    .skills-container {
+        width: 80%;
+        height: 60vh;
+    }
+}
+
+@media (max-width: 1450px){
+    h1{
+        width: 80%;
+    }
+}
+
+@media (max-width: 1000px){
+    .skill-container{
+        height: 240px;
+        width: 200px;
+    }
+
+    .image-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .skill-container h2{
+        font-size: 20px;
+        width: 80%;
+    }
+    .skill-container img{
+        width: 175px;
+        height: 175px;
+    }
+}
+
+@media (max-width: 900px){
+    .skills-explain p{
+       padding: 2%;
+    }
 }
