@@ -179,7 +179,7 @@ function BaseLayout(props : {children: JSX.Element}) {
                 is animated to slide in from the left as well as fade in at the same time */}
             <motion.div 
             className="sticky-header"
-            animate={{x: [-1000, 0], opacity: [0, 1]}}
+            animate={{x: [-500, 0], opacity: [0, 1]}}
             transition={{ease: "easeInOut", duration: 0.5}}>
               <Link to="/" className="TPZ">TPZ</Link>
               <div className="nav-dropdown" onClick={()=>{setDropdownToggle(!dropdownToggle);}}>
