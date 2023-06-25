@@ -11,6 +11,7 @@ import { useAppSelector, useAppDispatch } from '../app/hooks';
 import { changeHeader } from '../slices/headerSlice';
 import { fetchQuote } from '../slices/bibleSlice';
 
+import React from 'react';
 import { useRef, useEffect, MutableRefObject, useState } from 'react';
 import { useLocation } from 'react-router-dom'
 import { motion, useScroll,  useTransform, useInView } from "framer-motion";
@@ -263,7 +264,7 @@ function BaseLayout(props : {children: JSX.Element}) {
                 </Link>
               </li>
           </motion.ul>
-        {props.children}
+        {React.cloneElement(props.children, { headerRef })}
         <div className="parallax" ref={quoteRef}>
           <div className="parallax-opacity-layer">
             <h2
