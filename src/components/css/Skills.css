@@ -428,6 +428,7 @@ h1{
     .modal-content-box p{
         max-height: 60%;
         font-size: 20px;
+        padding: 20px;
     }
     .modal-content-box{
         margin-top: 200px;
