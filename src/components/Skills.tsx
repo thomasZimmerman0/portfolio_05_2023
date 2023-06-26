@@ -85,7 +85,7 @@ function Skills(props : { headerRef: MutableRefObject<any> } | {}) {
         <div className="skills-explain">
           <h2>Explanation</h2>
           <p>
-            &nbsp;&nbsp;&nbsp;&nbsp;This is an interactive collection of the most prevelant and powerful technincal application development tools that I have learned and practiced with over the years. Most of these skills are heavily tied to website development; my confidence in delivering masterful products with every tool lister here is enormously high. 
+            &nbsp;&nbsp;&nbsp;&nbsp;This is an interactive collection of the most prevelant and powerful technincal application development tools that I have learned and practiced with over the years. Most of these skills are heavily tied to website development; my confidence in delivering masterful products with every tool listed here is enormously high. 
           </p>
           <p>
             &nbsp;&nbsp;&nbsp;&nbsp; The current interactive display is not reflective of all of my abilites. Please downlad my resume from the footer and give it a read to find out more!
