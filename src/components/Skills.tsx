@@ -2,10 +2,9 @@ import './css/Skills.css';
 import skillData from '../assets/importSkills';
 
 import { SkillInfo } from '../interfaces/interfaces';
-import { useAppSelector, useAppDispatch } from '../app/hooks';
 
 import { useRef, useEffect, MutableRefObject, useState } from 'react';
-import { motion, useScroll,  useTransform, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 function Skills(props : { headerRef: MutableRefObject<any> } | {}) {
   //Header Logic
   const placeholderRef : MutableRefObject<any> = useRef();
@@ -133,7 +132,6 @@ function Skills(props : { headerRef: MutableRefObject<any> } | {}) {
             transition={{
               type: "spring",
               stiffness: 50,
-              ease: "easeIn",
               duration: 1
             }}
             variants={mouseOverXVariants}

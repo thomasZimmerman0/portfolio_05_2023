@@ -9,6 +9,7 @@ import { store } from './app/store'
 import './index.css';
 import App from './app/App';
 import Skills from './components/Skills'
+import Contact from './components/Contact'
 import BaseLayout from './layouts/layout'
 
 const router = createBrowserRouter([
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
   },
   {
     path: "contact",
-    element: <BaseLayout><App /></BaseLayout>
+    element: <BaseLayout><Contact /></BaseLayout>
   },
 ])
 
