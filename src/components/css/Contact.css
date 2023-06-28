@@ -1,0 +1,13 @@
+.main-container{
+    height: 50vh;
+}
+
+#contact-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    height: 100%;
+    width: 80%;
+    color: white;
+    font-family: 'Oxanium'
+}

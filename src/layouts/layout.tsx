@@ -120,7 +120,6 @@ function BaseLayout(props : {children: JSX.Element}) {
       popup.style.display = displayProp; // switches display value of popup box
   }
   let mouseMove = (e: React.MouseEvent<HTMLHeadingElement, MouseEvent>)=>{
-    console.log(e)
     let pageY = e.pageY;
     let pageX = e.pageX;
     let popup = quotePopupRef.current;
