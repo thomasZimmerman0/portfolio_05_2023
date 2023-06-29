@@ -48,7 +48,7 @@ function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
         </form>
             <ReCAPTCHA
             id="captcha"
-            sitekey="6LfEFNwmAAAAAButL5eSgdMZy3Iy1l-Ib9MPraVB"
+            sitekey=""
             onChange={onChange}
             />
     </div>
