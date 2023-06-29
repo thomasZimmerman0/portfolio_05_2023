@@ -15,7 +15,7 @@ h1{
     color: rgb(253, 0, 0);
     font-family: "Graduate";
 }
-.main-container{
+.main-container-skills{
     display: flex;
     justify-content: space-evenly;
     height: auto;
@@ -256,7 +256,7 @@ h1{
 }
 
 @media (max-width: 2155px){
-    .main-container{
+    .main-container-skills{
         flex-direction: column;
         align-items: center;
     }

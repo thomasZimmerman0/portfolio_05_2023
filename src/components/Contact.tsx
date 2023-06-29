@@ -26,24 +26,31 @@ function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
     }
     function onChange(value :any) {
         console.log("Captcha value:", value);
-      }
+    }
 
   return (
     <>
-    <div className="main-container">
+    <div className="main-container-contact">
         <form ref={form} onSubmit={runSendForm} id="contact-form">
-            <label>Name</label>
-            <input type="text" name="user_name"></input>
-            <label>Email</label>
-            <input type="email" name="user_email"></input>
-            <label>Message</label>
-            <textarea name="message"></textarea>
+            <div className="contact-input-element">
+                <label>Name <strong>*</strong></label>
+                <input id="name" type="text" name="user_name"></input>
+            </div>
+            <div className="contact-input-element">
+                <label>Email / Phone <strong>*</strong></label>
+                <input id="email" type="email" name="user_email"></input>
+            </div>
+            <div className="contact-input-element">
+                <label>Message <strong>*</strong></label>
+                <textarea id="message" name="message"></textarea>
+            </div>
             <input type="submit" value="Send"></input>
+        </form>
             <ReCAPTCHA
-            sitekey="6LfEFNwmAAAAABp_YAt_ZH9KLNY0jmJ4VUQeMfzm"
+            id="captcha"
+            sitekey="6LfEFNwmAAAAAButL5eSgdMZy3Iy1l-Ib9MPraVB"
             onChange={onChange}
             />
-        </form>
     </div>
     </>
   );
