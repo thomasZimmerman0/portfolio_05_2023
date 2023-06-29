@@ -4,6 +4,7 @@ import skillData from '../assets/importSkills';
 import { SkillInfo } from '../interfaces/interfaces';
 
 import { useRef, useEffect, MutableRefObject, useState } from 'react';
+
 import { motion, useInView } from "framer-motion";
 function Skills(props : { headerRef: MutableRefObject<any> } | {}) {
   //Header Logic

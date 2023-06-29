@@ -14,6 +14,7 @@ import { fetchQuote } from '../slices/bibleSlice';
 import React from 'react';
 import { useRef, useEffect, MutableRefObject, useState } from 'react';
 import { useLocation } from 'react-router-dom'
+
 import { motion, useScroll,  useTransform, useInView } from "framer-motion";
 
 import { 
