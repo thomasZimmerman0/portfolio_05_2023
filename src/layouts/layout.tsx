@@ -138,31 +138,35 @@ function BaseLayout(props : {children: JSX.Element}) {
             Tom ZimmermaN
           </h2>
           <ul>
-            <li 
-            className={pageState === "home" ? "selected-page-button" : ""} 
-            onClick={async() => {dispatch(changeHeader("home"))}}>
-              <Link to="/">
+            <li className={pageState === "home" ? "selected-page-button" : ""}>
+              <Link 
+              to="/"
+              onClick={async() => {dispatch(changeHeader("home"))}}
+                >
                 Home
               </Link>
             </li>
-            <li 
-            className={pageState === "about" ? "selected-page-button" : ""} 
-            onClick={() => dispatch(changeHeader("about"))}>
-              <Link to="/about">
+            <li className={pageState === "about" ? "selected-page-button" : ""}>
+              <Link 
+                to="/about"
+                onClick={() => dispatch(changeHeader("about"))}
+                >
                 About
               </Link>
             </li>
-            <li 
-            className={pageState === "skills" ? "selected-page-button" : ""}
-            onClick={() => dispatch(changeHeader("skills"))}>
-              <Link to="/skills">
+            <li className={pageState === "skills" ? "selected-page-button" : ""}>
+              <Link 
+              to="/skills"
+              onClick={() => dispatch(changeHeader("skills"))}
+              >
                 Skills
               </Link>
             </li>
-            <li
-            className={pageState === "contact" ? "selected-page-button" : ""}  
-            onClick={() => dispatch(changeHeader("contact"))}>
-              <Link to="/contact">
+            <li className={pageState === "contact" ? "selected-page-button" : ""}>
+              <Link 
+              to="/contact"
+              onClick={() => dispatch(changeHeader("contact"))}
+              >
                 Contact
               </Link>
             </li>

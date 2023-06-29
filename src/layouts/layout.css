@@ -102,10 +102,12 @@ header ul li:hover{
 }
 
 header ul li a {
+    box-sizing: border-box;
     color: white;
     text-decoration: none;
-    width: 100%;
-    height: 100%;
+    margin-top: 5px;
+    width: 110%;
+    height: 125%;
 }
 
 .selected-page-button{

@@ -44,13 +44,13 @@ function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
                 <label>Message <strong>*</strong></label>
                 <textarea id="message" name="message"></textarea>
             </div>
-            <input type="submit" value="Send"></input>
+            <input id="submit" type="submit" value="Send"></input>
         </form>
-            <ReCAPTCHA
+            { /* <ReCAPTCHA
             id="captcha"
             sitekey=""
             onChange={onChange}
-            />
+            /> */ }
     </div>
     </>
   );

@@ -238,6 +238,7 @@ h1{
     text-align:center;
     word-wrap: break-word;
     font-size: 30px;
+    max-width: 100%;
 }
 
 .modal-content-box a:hover {
@@ -263,7 +264,7 @@ h1{
     .skills-explain{
         width: 80%;
         height: 10%;
-        margin-bottom: 2%;
+        margin-bottom: 5%;
     }
     .skills-explain p{
         padding: 1%;
