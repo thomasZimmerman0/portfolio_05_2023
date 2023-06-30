@@ -35,6 +35,7 @@ function BaseLayout(props : {children: JSX.Element}) {
   //more refs
   const quoteRef : MutableRefObject<any> = useRef();
   const quotePopupRef : MutableRefObject<any> = useRef();
+  const componentCont : MutableRefObject<any> = useRef();
   //State variable to keep track of weather the initial header is visible to the user or not
   const [headerOneVisible, setHeaderOneVisible] = useState<boolean>(true);
   //more states
@@ -65,6 +66,7 @@ function BaseLayout(props : {children: JSX.Element}) {
   (The first value in both arrays passed to useTransform)*/
   const scale = useTransform(scrollYProgress, [1, 0], [0, 1]);
   const opacity = useTransform(scrollYProgress, [1, 0], [0, 1]);
+  const rotate = useTransform(scrollYProgress, [1, 0], [0, 360]);
   //more Framer Motion
   const quoteInView = useInView(quoteRef);
   useEffect(()=>{
@@ -115,7 +117,20 @@ function BaseLayout(props : {children: JSX.Element}) {
       setTimeout(()=>{setTimer(true)}, 5000)
     }
   },[quoteInView, timer, dispatch])
-
+  useEffect(()=>{
+    setTimeout(()=>{
+      componentCont.current.className = "component-container"
+    },1000)
+  },[])
+  let reRoute = (route: string) =>{
+    dispatch(changeHeader(route))
+    let component = componentCont.current;
+    let defaultClass = component.className
+    component.className += " animate-comp"
+    setTimeout(()=>{
+      component.className = defaultClass
+    },1000)
+  }
   let mouseOverOutBibleQuote = (displayProp: string) =>{
       let popup = quotePopupRef.current; // sets reference to popup box to popup variable
       popup.style.display = displayProp; // switches display value of popup box
@@ -133,7 +148,8 @@ function BaseLayout(props : {children: JSX.Element}) {
         This main header element fades away and gets replaced with a much more manageable header */}
         <motion.header style={{
           scale,
-          opacity
+          opacity,
+          rotate
         }} ref={headerRef}>
           <h2>
             Tom ZimmermaN
@@ -142,7 +158,7 @@ function BaseLayout(props : {children: JSX.Element}) {
             <li className={pageState === "home" ? "selected-page-button" : ""}>
               <Link 
               to="/"
-              onClick={async() => {dispatch(changeHeader("home"))}}
+              onClick={() => reRoute("home")}
                 >
                 Home
               </Link>
@@ -150,7 +166,7 @@ function BaseLayout(props : {children: JSX.Element}) {
             <li className={pageState === "about" ? "selected-page-button" : ""}>
               <Link 
                 to="/about"
-                onClick={() => dispatch(changeHeader("about"))}
+                onClick={() => reRoute("about")}
                 >
                 About
               </Link>
@@ -158,7 +174,7 @@ function BaseLayout(props : {children: JSX.Element}) {
             <li className={pageState === "skills" ? "selected-page-button" : ""}>
               <Link 
               to="/skills"
-              onClick={() => dispatch(changeHeader("skills"))}
+              onClick={() => reRoute("skills")}
               >
                 Skills
               </Link>
@@ -166,7 +182,7 @@ function BaseLayout(props : {children: JSX.Element}) {
             <li className={pageState === "contact" ? "selected-page-button" : ""}>
               <Link 
               to="/contact"
-              onClick={() => dispatch(changeHeader("contact"))}
+              onClick={() => reRoute("contact")}
               >
                 Contact
               </Link>
@@ -195,24 +211,24 @@ function BaseLayout(props : {children: JSX.Element}) {
               <ul className="sticky-buttons">
                 <li
                 className={pageState === "home" ? "selected-page-button-sb" : "not-selected-page-button-sb"}
-                onClick={() => dispatch(changeHeader("home"))}>
+                onClick={() => reRoute("home")}>
                   <Link to="/">Home</Link>
                 </li>
                 <li
                 className={pageState === "about" ? "selected-page-button-sb" : "not-selected-page-button-sb"}
-                onClick={() => dispatch(changeHeader("about"))}>
+                onClick={() => reRoute("about")}>
                   <Link to="/about">About</Link>
                 </li>
                 <li
                 className={pageState === "skills" ? "selected-page-button-sb" : "not-selected-page-button-sb"}  
-                onClick={() => dispatch(changeHeader("skills"))}>
+                onClick={() => reRoute("skills")}>
                   <Link to="/skills">
                     Skills
                   </Link>
                 </li>
                 <li
                 className={pageState === "contact" ? "selected-page-button-sb" : "not-selected-page-button-sb"}  
-                onClick={() => dispatch(changeHeader("contact"))}>
+                onClick={() => reRoute("contact")}>
                   <Link to="/contact">
                     Contact
                   </Link>
@@ -237,7 +253,7 @@ function BaseLayout(props : {children: JSX.Element}) {
           transition={{ease: "easeInOut", duration: 0.5}}>
               <li>
                 <Link 
-                onClick={() => dispatch(changeHeader("home"))}
+                onClick={() => reRoute("home")}
                 className={pageState === "home" ? "selected-menu-item" : "unselected-menu-item"} 
                 to="/">
                   Home
@@ -246,7 +262,7 @@ function BaseLayout(props : {children: JSX.Element}) {
               <li>
                 <Link 
                 className={pageState === "about" ? "selected-menu-item" : "unselected-menu-item"}
-                onClick={() => dispatch(changeHeader("about"))} 
+                onClick={() => reRoute("about")} 
                 to="/about">
                   About
                 </Link>
@@ -254,7 +270,7 @@ function BaseLayout(props : {children: JSX.Element}) {
               <li>
                 <Link 
                 className={pageState === "skills" ? "selected-menu-item" : "unselected-menu-item"}
-                onClick={() => dispatch(changeHeader("skills"))} 
+                onClick={() => reRoute("skills")} 
                 to="/skills">
                   Skills
                 </Link>
@@ -262,13 +278,15 @@ function BaseLayout(props : {children: JSX.Element}) {
               <li>
                 <Link
                 className={pageState === "contact" ? "selected-menu-item" : "unselected-menu-item"} 
-                onClick={() => dispatch(changeHeader("contact"))}
+                onClick={() => reRoute("contact")}
                 to="/contact">
                   Contact
                 </Link>
               </li>
           </motion.ul>
-        {React.cloneElement(props.children, { headerRef })}
+          <div ref={componentCont} className="component-container animate-comp">
+          {React.cloneElement(props.children, { headerRef })}
+          </div>
         <div className="parallax" ref={quoteRef}>
           <div className="parallax-opacity-layer">
             <h2

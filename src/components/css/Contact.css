@@ -51,6 +51,7 @@ label strong{
 
 #message{
     height: 20vh;
+    resize: none;
 }
 
 #submit{
@@ -63,7 +64,12 @@ label strong{
     font-size: 32px;
     font-weight: bolder;
     color: white;
+    transition: all ease-in-out .2s;
+    border: 3px solid darkred;
+}
 
+#submit:hover{
+    cursor: pointer;
 }
 
 #captcha{
@@ -89,5 +95,4 @@ label strong{
     background-color: rgb(255, 135, 135);
     color: rgb(144, 0, 0);
     border: solid red 1px;
-    display: none;
 }

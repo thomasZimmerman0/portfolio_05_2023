@@ -14,19 +14,25 @@ function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
    const [error, setError] = useState<{errorOccured: boolean, errorMessage: string}>({errorOccured: false, errorMessage: ""});
 
     function runSendForm(e: any){
+        let errorOccured = false
         e.preventDefault();
-        console.log(process.env.REACT_APP_EMAIL_JS_KEY)
         setError({errorOccured: false, errorMessage: ""});
         const inputs: HTMLCollection = e.target.children;
         for(let i = 0; i < inputs.length; i++){
             let input: Element = inputs[i]
-            if(input.tagName === "INPUT" || input.tagName === "TEXTAREA"){
-                let inputElement: HTMLInputElement = input as HTMLInputElement
-                if(!inputElement.value) setError({errorOccured: true, errorMessage: "Please fill out every field!"})
-                if(inputElement.type !== "submit") inputElement.value = ""
+            if(input.className.includes("contact-input-element")){
+                let parsedInputs: HTMLInputElement = input.children[1] as HTMLInputElement;
+                if(!parsedInputs.value){
+                    errorOccured = true;
+                    setError({errorOccured: true, errorMessage: "Please fill out every field!"})
+                }
+                if(parsedInputs.type !== "submit") parsedInputs.value = ""
             }
+            if(errorOccured){
+                return null;
+            } 
         }
-        emailjs.sendForm('service_ieljm36', 'portfolio_contact_form', form.current, process.env.REACT_APP_EMAIL_JS_KEY!)
+        emailjs.sendForm('service_ieljm36', 'portfolio_contact_form', form.current, process.env.REACT_APP_EMAIL_JS_KEY)
         .then((result) => {
             console.log(result)
         }, (error) => {
@@ -54,7 +60,20 @@ function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
                 <textarea id="message" name="message"></textarea>
             </div>
             {error.errorOccured ? <div className="error-box">{error.errorMessage}</div> : "" }
-            <input id="submit" type="submit" value="Send"></input>
+            <motion.input id="submit" type="submit" value="Send"  
+            whileTap={{
+                scale: 0.7,
+                backgroundColor: 'rgb(69, 0, 0)'
+            }}
+            whileHover={{
+                scale: 1.2,
+                backgroundColor: 'darkred'
+            }}
+            transition={{
+                delay: 0,
+                duration: 0.01
+            }}
+            ></motion.input>
         </form>
 
             { /* <ReCAPTCHA

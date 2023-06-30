@@ -28,7 +28,7 @@ header {
     position: absolute;
     background-color: black;
     height: 50vh;
-    margin-bottom: 50vh;
+    margin-bottom: 52vh;
     z-index: 2;
     overflow: hidden;
     border-bottom: solid red 2px;
@@ -78,6 +78,7 @@ header ul li {
     background-color: red;
     padding: 4px 0px 4px 0px;
     color: white;
+    transition: all 0s ease-in-out 0s;
 }
 
 header ul li:hover{
@@ -130,7 +131,7 @@ header ul li a {
     top: 0;
     position: fixed;
     width: 100%;
-    height: 10rem;
+    height: 7rem;
     margin-bottom: 4rem;
     background-color: black;
     color: white;
@@ -306,6 +307,25 @@ header ul li a {
 .selected-menu-item{
     background-color:rgb(125, 3, 3);
     color: white;
+}
+
+.component-container{
+    width: 100%;
+    height: auto;
+}
+
+.animate-comp{
+    animation-name: slide;
+    animation-duration: 1s;
+}
+
+@keyframes slide {
+    from {
+        transform: translate(-2000px)
+    }
+    to {
+        transform: translate(0px)
+    }
 }
 
 .parallax{
