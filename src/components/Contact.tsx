@@ -10,6 +10,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
 
    const captchaKey : string = process.env.REACT_APP_CAPTCHA_KEY as string
+   console.log(captchaKey)
    const form: MutableRefObject<any> = useRef();
 
    const [error, setError] = useState<{errorOccured: boolean, errorMessage: string}>({errorOccured: false, errorMessage: ""});
