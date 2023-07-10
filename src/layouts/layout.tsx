@@ -166,7 +166,7 @@ function BaseLayout(props : {children: JSX.Element}) {
             <li className={pageState === "about" ? "selected-page-button" : ""}>
               <Link 
                 to="/about"
-                onClick={() => reRoute("about")}
+                onClick={()=>reRoute("about")}
                 >
                 About
               </Link>
@@ -182,7 +182,7 @@ function BaseLayout(props : {children: JSX.Element}) {
             <li className={pageState === "contact" ? "selected-page-button" : ""}>
               <Link 
               to="/contact"
-              onClick={() => reRoute("contact")}
+              onClick={()=>reRoute("contact")}
               >
                 Contact
               </Link>

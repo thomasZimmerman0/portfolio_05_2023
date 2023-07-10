@@ -12,6 +12,7 @@ function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
    const form: MutableRefObject<any> = useRef();
 
    const [error, setError] = useState<{errorOccured: boolean, errorMessage: string}>({errorOccured: false, errorMessage: ""});
+   const [success, setSuccess] = useState<boolean>(false);
 
     function runSendForm(e: any){
         let errorOccured = false
@@ -26,6 +27,10 @@ function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
                     errorOccured = true;
                     setError({errorOccured: true, errorMessage: "Please fill out every field!"})
                 }
+                if(localStorage.getItem("userSentMessage") === "true"){
+                    errorOccured = true;
+                    setError({errorOccured: true, errorMessage: "Please do not spam me with messages!"})
+                }
                 if(parsedInputs.type !== "submit") parsedInputs.value = ""
             }
             if(errorOccured){
@@ -34,7 +39,8 @@ function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
         }
         emailjs.sendForm('service_ieljm36', 'portfolio_contact_form', form.current, process.env.REACT_APP_EMAIL_JS_KEY)
         .then((result) => {
-            console.log(result)
+            localStorage.setItem("userSentMessage", "true");
+            setSuccess(true)
         }, (error) => {
             setError({errorOccured: true, errorMessage: error.text})
         });
@@ -45,6 +51,7 @@ function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
 
   return (
     <>
+     <h1>CONTACT</h1>
     <div className="main-container-contact">
         <form ref={form} onSubmit={runSendForm} id="contact-form">
             <div className="contact-input-element">
@@ -60,6 +67,8 @@ function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
                 <textarea id="message" name="message"></textarea>
             </div>
             {error.errorOccured ? <div className="error-box">{error.errorMessage}</div> : "" }
+            {success ? <div className="success-box">Your message has been successfully delivered!</div> : "" }
+
             <motion.input id="submit" type="submit" value="Send"  
             whileTap={{
                 scale: 0.7,
@@ -67,7 +76,7 @@ function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
             }}
             whileHover={{
                 scale: 1.2,
-                backgroundColor: 'darkred'
+                backgroundColor: 'rgb(139, 0, 0)'
             }}
             transition={{
                 delay: 0,

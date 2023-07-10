@@ -1,3 +1,18 @@
+h1{
+    margin: auto;
+    width: 50%;
+    padding: 0 6%;
+    text-align: center;
+    font-size: 120px;
+    border-radius: 100px;
+    background-position-x: left;
+    background-position-y: bottom;
+    background-size: cover;
+    background-image: url("../../assets/porcelin.jpg");
+    color: rgb(253, 0, 0);
+    font-family: "Graduate";
+}
+
 .main-container-contact{
     display: flex;
     flex-direction: column;
@@ -8,11 +23,13 @@
 }
 
 #contact-form{
+    position: static;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: 70vh;
+    min-height: 70vh;
+    height: auto;
     width: 80%;
     color: white;
     font-family: 'Oxanium'
@@ -21,10 +38,12 @@
 .contact-input-element{
     display: flex;
     flex-direction: column;
+    height: 5%;
 }
 
 .contact-input-element input,
 .contact-input-element textarea{
+    position: static;
     padding: 20px;
     font-size: 24px;
     font-family: 'Oxanium';
@@ -55,7 +74,7 @@ label strong{
 }
 
 #submit{
-    margin: 3%;
+    margin: 1%;
     padding: 1%;
     width: 20%;
     background-color: rgb(255, 0, 0);
@@ -82,17 +101,24 @@ label strong{
     max-height: 100%;
 }
 
-.error-box{
+.error-box, .success-box{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 80%;
-    min-height: 10vh;
-    margin: 3% 0;
+    height: 10vh;
+    margin: 2% 0;
+    padding: 2%;
     border-radius: 20px;
     font-family: 'Oxanium';
     font-size: 30px;
     background-color: rgb(255, 135, 135);
     color: rgb(144, 0, 0);
     border: solid red 1px;
+}
+
+.success-box{
+    background-color: rgb(170, 255, 181);
+    color: rgb(0, 93, 5);
+    border: solid rgb(7, 137, 0) 1px;
 }
