@@ -152,7 +152,7 @@ function BaseLayout(props : {children: JSX.Element}) {
           rotate
         }} ref={headerRef}>
           <h2>
-            Tom ZimmermaNn
+            Tom ZimmermaN
           </h2>
           <ul>
             <li className={pageState === "home" ? "selected-page-button" : ""}>
