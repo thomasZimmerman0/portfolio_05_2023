@@ -9,6 +9,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 
 function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
 
+   const captchaKey : string = process.env.REACT_APP_CAPTCHA_KEY as string
    const form: MutableRefObject<any> = useRef();
 
    const [error, setError] = useState<{errorOccured: boolean, errorMessage: string}>({errorOccured: false, errorMessage: ""});
@@ -86,7 +87,7 @@ function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
         </form>
              <ReCAPTCHA
             id="captcha"
-            sitekey="6LfEFNwmAAAAABp_YAt_ZH9KLNY0jmJ4VUQeMfzm"
+            sitekey={captchaKey}
             onChange={onChange}
             /> 
     </div>
