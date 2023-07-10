@@ -85,11 +85,11 @@ function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
             ></motion.input>
         </form>
 
-            { /* <ReCAPTCHA
+             <ReCAPTCHA
             id="captcha"
-            sitekey=""
+            sitekey="6LfEFNwmAAAAABp_YAt_ZH9KLNY0jmJ4VUQeMfzm"
             onChange={onChange}
-            /> */ }
+            /> 
     </div>
     </>
   );
