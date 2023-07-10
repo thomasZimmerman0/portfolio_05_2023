@@ -6,10 +6,9 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "redirects": [ {
+    "rewrites": [ {
       "source": "/contact",
-      "destination": "/contact",
-      "type": 301
+      "destination": "/contact"
     } ]
   }
 }
