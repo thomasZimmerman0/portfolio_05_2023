@@ -9,12 +9,12 @@ import ReCAPTCHA from "react-google-recaptcha";
 
 function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
 
-   const captchaKey : string = process.env.REACT_APP_CAPTCHA_KEY as string
-   console.log(captchaKey)
    const form: MutableRefObject<any> = useRef();
 
    const [error, setError] = useState<{errorOccured: boolean, errorMessage: string}>({errorOccured: false, errorMessage: ""});
    const [success, setSuccess] = useState<boolean>(false);
+   const [captcha, setCaptcha] = useState<boolean>(false);
+
 
     function runSendForm(e: any){
         let errorOccured = false
@@ -33,6 +33,10 @@ function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
                     errorOccured = true;
                     setError({errorOccured: true, errorMessage: "Please do not spam me with messages!"})
                 }
+                if(!captcha){
+                    errorOccured = true;
+                    setError({errorOccured: true, errorMessage: "Please do the captcha below!"})
+                }
                 if(parsedInputs.type !== "submit") parsedInputs.value = ""
             }
             if(errorOccured){
@@ -47,10 +51,6 @@ function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
             setError({errorOccured: true, errorMessage: error.text})
         });
     }
-    function onChange(value :any) {
-        console.log("Captcha value:", value);
-    }
-
   return (
     <>
      <h1>CONTACT</h1>
@@ -88,8 +88,8 @@ function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
         </form>
              <ReCAPTCHA
             id="captcha"
-            sitekey={captchaKey}
-            onChange={onChange}
+            sitekey={process.env.REACT_APP_CAPTCHA_KEY as string}
+            onChange={()=>setCaptcha(true)}
             /> 
     </div>
     </>
