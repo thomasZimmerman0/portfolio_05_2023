@@ -55,6 +55,10 @@ function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
     <>
      <h1>CONTACT</h1>
     <div className="main-container-contact">
+        <div className="contact-info">
+            <p>Phone: +1 848-986-0341</p>
+            <p>Email: tomzimmerman7@protonmail.com</p>
+        </div>
         <form ref={form} onSubmit={runSendForm} id="contact-form">
             <div className="contact-input-element">
                 <label>Name <strong>*</strong></label>
@@ -62,7 +66,7 @@ function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
             </div>
             <div className="contact-input-element">
                 <label>Email / Phone <strong>*</strong></label>
-                <input id="email" type="email" name="user_email"></input>
+                <input id="email" type="text" name="user_email"></input>
             </div>
             <div className="contact-input-element">
                 <label>Message <strong>*</strong></label>
