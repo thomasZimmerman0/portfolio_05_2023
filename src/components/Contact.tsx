@@ -71,26 +71,28 @@ function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
             {error.errorOccured ? <div className="error-box">{error.errorMessage}</div> : "" }
             {success ? <div className="success-box">Your message has been successfully delivered!</div> : "" }
 
-            <motion.input id="submit" type="submit" value="Send"  
-            whileTap={{
-                scale: 0.7,
-                backgroundColor: 'rgb(69, 0, 0)'
-            }}
-            whileHover={{
-                scale: 1.2,
-                backgroundColor: 'rgb(139, 0, 0)'
-            }}
-            transition={{
-                delay: 0,
-                duration: 0.01
-            }}
-            ></motion.input>
+            <div className="submit-box">
+                <ReCAPTCHA
+                id="captcha"
+                sitekey={process.env.REACT_APP_CAPTCHA_KEY as string}
+                onChange={()=>setCaptcha(true)}
+                /> 
+                <motion.input id="submit" type="submit" value="Send"  
+                whileTap={{
+                    scale: 0.7,
+                    backgroundColor: 'rgb(69, 0, 0)'
+                }}
+                whileHover={{
+                    scale: 1.2,
+                    backgroundColor: 'rgb(139, 0, 0)'
+                }}
+                transition={{
+                    delay: 0,
+                    duration: 0.01
+                }}
+                ></motion.input>
+            </div>
         </form>
-             <ReCAPTCHA
-            id="captcha"
-            sitekey={process.env.REACT_APP_CAPTCHA_KEY as string}
-            onChange={()=>setCaptcha(true)}
-            /> 
     </div>
     </>
   );

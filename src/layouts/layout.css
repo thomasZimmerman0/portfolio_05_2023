@@ -221,6 +221,7 @@ header ul li a {
 .nav-dropdown div{
     box-sizing: border-box;
     width: 100%;
+    min-height: 4px;
     max-height: 4px;
     margin-top: 7px;
     background-color: white;
@@ -237,13 +238,13 @@ header ul li a {
 }
 .open-nav:nth-child(2){
     position: absolute;
-    bottom: 76px;
+    bottom: 50%;
     transform: rotate(45deg);
     transition: transform .05s, position .05s;
 }
 .open-nav:nth-child(3){
     position: absolute;
-    bottom: 76px;
+    bottom: 50%;
     transform: rotate(-45deg);
     transition: transform .05s, position .05s;
 }
@@ -255,7 +256,7 @@ header ul li a {
 .dropdown-menu{
     flex-direction: column;
     position: fixed;
-    top: 10rem;
+    top: 7rem;
     margin: 0 5% 0 35%;
     padding:0;
     width: 60%;
