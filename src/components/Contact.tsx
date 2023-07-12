@@ -15,17 +15,18 @@ function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
    const [success, setSuccess] = useState<boolean>(false);
    const [captcha, setCaptcha] = useState<boolean>(false);
 
-
-    function runSendForm(e: any){
-        let errorOccured = false
-        e.preventDefault();
+   
+   function runSendForm(e: any){
+       e.preventDefault();
+       let errorOccured = false
         setError({errorOccured: false, errorMessage: ""});
         const inputs: HTMLCollection = e.target.children;
+        let parsedInputs: HTMLInputElement[] = []
         for(let i = 0; i < inputs.length; i++){
             let input: Element = inputs[i]
             if(input.className.includes("contact-input-element")){
-                let parsedInputs: HTMLInputElement = input.children[1] as HTMLInputElement;
-                if(!parsedInputs.value){
+                let parsedInput: HTMLInputElement = input.children[1] as HTMLInputElement;
+                if(!parsedInput.value){
                     errorOccured = true;
                     setError({errorOccured: true, errorMessage: "Please fill out every field!"})
                 }
@@ -37,11 +38,12 @@ function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
                     errorOccured = true;
                     setError({errorOccured: true, errorMessage: "Please do the captcha below!"})
                 }
-                if(parsedInputs.type !== "submit") parsedInputs.value = ""
+                if(errorOccured){
+                    return null;
+                } else {
+                    parsedInputs.push(parsedInput)
+                }
             }
-            if(errorOccured){
-                return null;
-            } 
         }
         emailjs.sendForm('service_ieljm36', 'portfolio_contact_form', form.current, process.env.REACT_APP_EMAIL_JS_KEY)
         .then((result) => {
@@ -50,15 +52,14 @@ function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
         }, (error) => {
             setError({errorOccured: true, errorMessage: error.text})
         });
+        for(let element of parsedInputs){
+            element.value = ""
+        }
     }
-  return (
+    return (
     <>
      <h1>CONTACT</h1>
     <div className="main-container-contact">
-        <div className="contact-info">
-            <p>Phone: +1 848-986-0341</p>
-            <p>Email: tomzimmerman7@protonmail.com</p>
-        </div>
         <form ref={form} onSubmit={runSendForm} id="contact-form">
             <div className="contact-input-element">
                 <label>Name <strong>*</strong></label>
@@ -97,6 +98,10 @@ function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
                 ></motion.input>
             </div>
         </form>
+        <div className="contact-info">
+            <p><span>Phone:</span> +1 848-986-0341</p>
+            <p><span>Email:</span> tomzimmerman7@protonmail.com</p>
+        </div>
     </div>
     </>
   );

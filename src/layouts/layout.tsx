@@ -45,8 +45,8 @@ function BaseLayout(props : {children: JSX.Element}) {
     quote: string, 
     quoteName: string
   }>({
-    quote: '',
-    quoteName: ''
+    quote: "Retrieving your quote",
+    quoteName: ""
   });
   /*Framer motion variable that will keep track of the scroll progress on the Y axis 
   relative to my inital header (Ref). If no object was passed to useScroll() then
@@ -88,12 +88,19 @@ function BaseLayout(props : {children: JSX.Element}) {
     observer.observe(headerRef.current)
   },[dispatch, location.pathname])
   useEffect(()=>{
-    let parseQuote = (quote: string): string =>{
+    //This whole useEffect is to handle the strange syntax that is returned from the api that contains unwanted HTML formating
+    const parseQuote = (quote: string): string =>{
       let strsToParse = ['<span class="add">','¶','ss="mt1">','<span class="nd">','</span>','<span class="wj">', '</p><p class="q1"><span data-number="1" data-sid="PSA 26:1" class="v">']
       for(let str of strsToParse){
         if(quote.includes(str)) quote = quote.replaceAll(str, '')
       }
       return quote;
+    }
+    if(bibleState.status === "lodaing" || bibleState.status === "failed"){
+      setParsedQuote({
+        quote: bibleState.quote,
+        quoteName: "",
+      })
     }
     if(bibleState.status === "success"){
       let cutoff = bibleState.quote.indexOf('</span>');
@@ -122,7 +129,7 @@ function BaseLayout(props : {children: JSX.Element}) {
       componentCont.current.className = "component-container"
     },1000)
   },[])
-  let reRoute = (route: string) =>{
+  const reRoute = (route: string) =>{
     dispatch(changeHeader(route))
     let component = componentCont.current;
     let defaultClass = component.className
@@ -131,11 +138,11 @@ function BaseLayout(props : {children: JSX.Element}) {
       component.className = defaultClass
     },1000)
   }
-  let mouseOverOutBibleQuote = (displayProp: string) =>{
+  const mouseOverOutBibleQuote = (displayProp: string) =>{
       let popup = quotePopupRef.current; // sets reference to popup box to popup variable
       popup.style.display = displayProp; // switches display value of popup box
   }
-  let mouseMove = (e: React.MouseEvent<HTMLHeadingElement, MouseEvent>)=>{
+  const mouseMove = (e: React.MouseEvent<HTMLHeadingElement, MouseEvent>)=>{
     let pageY = e.pageY;
     let pageX = e.pageX;
     let popup = quotePopupRef.current;
@@ -319,13 +326,11 @@ function BaseLayout(props : {children: JSX.Element}) {
               duartion: 2
             } as any}>
             {parsedQuote.quoteName ? 
-            <>
               <h3>{parsedQuote.quoteName}:</h3>
-              <p> {parsedQuote.quote}</p> 
-            </>
             : 
               <></>
             }
+              <p> {parsedQuote.quote}</p> 
             </motion.div>
           </div>
         </div>

@@ -11,6 +11,7 @@ h1{
     background-image: url("../../assets/porcelin.jpg");
     color: rgb(253, 0, 0);
     font-family: "Graduate";
+    cursor: default
 }
 
 .main-container-contact{
@@ -20,6 +21,35 @@ h1{
     min-height: 50vh;
     height: auto;
     margin:10vh 0;
+}
+
+.contact-info{
+    display:flex;
+    width: 80%;
+    height: 5vh;
+    margin: 10vh auto 0 auto;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../../assets/whitetextured.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-right: solid 10px red;
+    border-left: solid 10px red;
+    border-top: solid 10px rgb(113, 0, 0);
+    border-bottom: solid 10px rgb(113, 0, 0);
+    font-family: 'Oxanium';
+    font-weight: bolder;
+}
+
+.contact-info p, span{
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
+
+.contact-info span{
+    font-family: 'Graduate';
+    margin-right: 20px;
 }
 
 #contact-form{
@@ -122,6 +152,7 @@ label strong{
     padding: 1%;
     border-radius: 20px;
     font-family: 'Oxanium';
+    text-align: center;
     font-size: 30px;
     background-color: rgb(255, 135, 135);
     color: rgb(144, 0, 0);
@@ -138,7 +169,19 @@ label strong{
     h1 {
         width: 80%;
     }
+    .error-box, .success-box{
+        font-size: 24px;
+    }
 }
+@media (max-width: 865px){
+    .contact-info{
+        flex-direction: column;
+        height: 10vh;
+        width: 50%;
+        justify-content: space-around;
+    }
+}
+
 @media (max-width: 705px){
     h1 {
         font-size: 85px;
@@ -149,8 +192,16 @@ label strong{
         width: 100%;
     }
 
+    .error-box, .success-box{
+        font-size: 18px;
+    }
+
     label{
         font-size: 26px;
+    }
+    .contact-info{
+        height: 15vh;
+        width: 80%;
     }
 }
 @media (max-width: 545px){
@@ -182,6 +233,9 @@ label strong{
 @media (max-width: 460px){
     h1 {
         font-size: 60px;
+    }
+    .contact-info{
+        font-size: 12px;
     }
 }
 
