@@ -53,3 +53,13 @@ export interface SkillInfo {
   description: string,
   Link: string  
 }
+
+export interface PersonalProjects {
+  projectName: string
+  images: string[],
+  technologiesUsed: string[],
+  about: string,
+  myRole: string,
+  repoLink: string,
+  websiteLink?: string,
+}
