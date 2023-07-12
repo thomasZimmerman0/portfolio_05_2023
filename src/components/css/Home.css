@@ -1,3 +1,25 @@
 .personal-projects{
     color: white;
 }
+
+.control-dots li{
+    background-color: rgb(0, 145, 255)!important;
+}
+
+.personal-project-container{
+    display: flex;
+    justify-content: space-around;
+}
+.personal-project-container h3{
+    width: 100%;
+}
+
+.carousel-root{
+    width: 40%;
+}
+
+.text-based-info{
+    display: flex;
+    flex-wrap: wrap;
+    width: 40%;
+}
