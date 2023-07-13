@@ -1,5 +1,42 @@
 .personal-projects{
+    position: relative;
     color: white;
+    font-family: 'Oxanium'
+}
+
+.project-carousel-cont{
+    display: none;
+}
+
+.left-button, .right-button{
+    position: absolute;
+    bottom: 40%;
+    width: 50px;
+    height: 50px;
+    border-radius: 300px;
+    font-family: "Graduate";
+    font-weight: 1000;
+    background-color: white;
+    border: 3px solid rgb(117, 117, 117);
+    box-shadow: 0px 0px 10px 1px inset rgb(117, 117, 117);
+    color: black;
+    cursor: pointer;
+}
+
+.left-button{
+    left: 10px
+}
+
+.right-button{
+    right: 10px
+}
+
+
+.personal-projects h2{
+    font-family: 'Cowboy';
+    text-align: center;
+    font-size: 60px;
+    text-shadow: 1px 1px 7px rgb(0, 102, 255);
 }
 
 .control-dots li{
@@ -9,17 +46,53 @@
 .personal-project-container{
     display: flex;
     justify-content: space-around;
+    background-color: rgb(0, 98, 255);
+    margin: 5%;
+    padding: 2%;
+    border-top: solid 10px white;
+    border-bottom: solid 10px white;
+    border-right: solid 10px rgb(149, 149, 149);
+    border-left: solid 10px rgb(149, 149, 149);
 }
 .personal-project-container h3{
     width: 100%;
+    margin: 0;
+    border-bottom: 3px solid white;
 }
 
 .carousel-root{
     width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;;
+}
+
+.carousel ul{
+    padding: 0;
+}
+
+.carousel .thumbs-wrapper{
+    display: flex;
+    justify-content: center;;
 }
 
 .text-based-info{
     display: flex;
     flex-wrap: wrap;
     width: 40%;
+}
+
+.text-based-info p{
+    max-height: 10vh;
+    overflow-y: auto;
+    padding-right: 40px
+}
+
+.text-based-info ul{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.text-based-info ul li{
+    width: 50%;
 }
