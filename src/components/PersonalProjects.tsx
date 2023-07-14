@@ -58,6 +58,7 @@ function PersonalProjects() {
     }
   };
 
+  //Toggles dropdown menus for personal projects
   const togglePersProjInfo = (e: any) =>{
     const dropTarget: HTMLElement = e.target.nextSibling
     if(!dropTarget.className.includes("drop-down-show")){
@@ -69,6 +70,9 @@ function PersonalProjects() {
 
   return (
       <>
+      <h1>
+        Personal Projects
+      </h1>
         {initialRender ? 
         <div className="lds-ring-cont">
           <div className="lds-ring"><div></div><div></div><div></div><div></div></div>: 

@@ -234,8 +234,9 @@ label strong{
     h1 {
         font-size: 60px;
     }
-    .contact-info{
-        font-size: 12px;
+    .contact-info p{
+        display: flex;
+        flex-direction: column;
     }
 }
 

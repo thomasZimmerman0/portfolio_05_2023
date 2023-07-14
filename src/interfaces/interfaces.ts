@@ -63,3 +63,9 @@ export interface PersonalProjects {
   repoLink: string,
   websiteLink?: string,
 }
+
+export interface ProfessionalProjects {
+  websiteLink: string
+  images: string[],
+  contribution: string
+}
