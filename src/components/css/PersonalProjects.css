@@ -1,0 +1,265 @@
+.personal-projects{
+    position: relative;
+    color: rgb(255, 255, 255);
+    font-family: 'Oxanium';
+    font-weight: 1000;
+}
+
+.project-carousel-cont, .hide-section{
+    display: none;
+}
+
+.left-button, .right-button{
+    position: absolute;
+    bottom: 40%;
+    width: 50px;
+    height: 50px;
+    border-radius: 300px;
+    font-family: "Graduate";
+    font-weight: 1000;
+    background-color: white;
+    border: 3px solid rgb(255, 255, 255);
+    box-shadow: 0px 0px 10px 1px inset rgb(117, 117, 117);
+    color: black;
+    cursor: pointer;
+}
+
+.left-button{
+    left: 10px
+}
+
+.right-button{
+    right: 10px
+}
+
+.personal-projects h2{
+    font-family: 'Graduate';
+    text-align: center;
+    font-size: 60px;
+    text-shadow: 1px 1px 7px rgb(0, 102, 255);
+    margin: 0px;
+}
+
+.control-dots li{
+    background-color: rgb(0, 145, 255)!important;
+}
+
+.personal-project-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    background-image: url(../../assets/metal.jpg);
+    margin: 3% 6%;
+    padding: 2%;
+    border-top: solid 10px white;
+    border-bottom: solid 10px white;
+    border-right: solid 10px rgb(191, 191, 191);
+    border-left: solid 10px rgb(191, 191, 191);
+}
+
+.animate-personal-projects-section{
+    animation-name: rotate-proj;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+}
+
+@keyframes rotate-proj{
+    0%{
+        transform: translate(0) scale(1);
+    }
+    25%{
+        transform: translate(0) scale(0.8);
+    }
+    50%{
+        transform: translate(-100%) scale(0.8);
+    }
+    75%{
+        transform: translate(0) scale(0.8);
+    }
+    100%{
+        transform: translate(0) scale(1);
+    }
+}
+
+.personal-project-container h3{
+    width: 100%;
+    height: auto;
+    margin: 0;
+    color: rgb(255, 255, 255);
+    background-color:rgb(0, 145, 255);
+    box-shadow: 0px 0px 5px 2px black inset;
+    border-top: solid 10px black;
+    border-bottom: solid 10px black;
+    border-left: solid 10px rgb(107, 107, 107);
+    border-right: solid 10px rgb(107, 107, 107);
+    padding: 2%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.personal-project-container h3:nth-child(3), .personal-project-container h3:nth-child(5){
+    margin-top: 5%;
+}
+
+.carousel-root{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;;
+}
+
+.carousel ul{
+    padding: 0;
+}
+
+
+.carousel .thumbs-wrapper{
+    display: flex;
+    justify-content: center;;
+}
+
+.carousel-modal{
+    position: fixed;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    top: 0px;
+    background-color: rgba(0, 0, 0, 0.588);
+    width: 100%;
+    height: 100vh;
+    z-index: 3;
+    transition: display 1s
+}
+
+.modal-carousel-container{
+    height: 100vh;
+    width: 80%;
+    display: flex;
+    align-items: center;
+}
+
+.carousel-img-cont-mini{
+    cursor: pointer;
+}
+
+.carousel-modal .carousel-img-cont{
+    margin: 0px;
+}
+
+.carousel-modal .modal-carousel-container div:nth-child(1){
+    width: 100%;
+}
+
+.close-modal-button{
+    position: absolute;
+    top : 20px;
+    right : 40px;
+    font-size: 40px;
+    font-family: "Graduate";
+    color: rgb(255, 255, 255);
+    transform: scaleX(1.4);
+    cursor: pointer;
+    transition: 0.5s
+}
+.close-modal-button:hover{
+    transform: scaleX(2) scaleY(1.6)
+}
+
+.drop-down{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 0px;
+    overflow: hidden;
+    color: black;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 10px 2px rgb(66, 66, 66) inset;
+    border-radius: 0px 0px 100px 100px / 0px 0px 35px 35px; 
+    transition: height 0.5s;
+}
+
+.drop-down-show{
+    padding: 5%;
+    margin-bottom: 5%;
+    height: 250px;
+}
+
+.drop-down p{
+    overflow-y: auto;
+    height: auto;
+    line-height: 25px;
+}
+
+.drop-down ul{
+    padding: 0px;
+}
+
+.drop-down li{
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    text-align: center;
+}
+
+.text-based-info{
+    display: flex;
+    flex-wrap: wrap;
+    width: 40%;
+    height: auto;
+}
+
+.text-based-info ul{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.text-based-info ul li{
+    width: 50%;
+}
+
+/* Spinner CSS */
+.lds-ring-cont{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    height: 20vh;
+}
+
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+  }
+  .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+/* End spinner CSS */
