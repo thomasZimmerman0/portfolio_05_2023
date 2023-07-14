@@ -29,7 +29,7 @@ header {
     background-color: black;
     height: 50vh;
     margin-bottom: 52vh;
-    z-index: 2;
+    z-index: 3;
     overflow: hidden;
     border-bottom: solid red 2px;
 }
@@ -135,7 +135,7 @@ header ul li a {
     margin-bottom: 4rem;
     background-color: black;
     color: white;
-    z-index: 2;
+    z-index: 3;
 }
 
 .sticky-header .TPZ{
@@ -262,7 +262,7 @@ header ul li a {
     width: 60%;
     height: 40vh;
     background-color: rgb(255, 255, 255);
-    z-index: 1;
+    z-index: 2;
     display:none;
 }
 

@@ -89,9 +89,10 @@ const personalProjects: PersonalProjects[] = [
             "HTML",
             "CSS",
             "thecocktaildb API",
+            "Nutritionx API"
         ],
         about: `"What's in my Drink" is an application that was made to make browsing and locating recipies for a multitude of mixed drinks easy to navigate and easy to use. What makes this application truly special is that every drink has a caloric content that is calculated and displayed for each drink. Normally finding this information is tedious, but this application makes the process instantaneous.`,
-        myRole: "My Role in this project was to design and implement the primary logic functions which are handling and displaying the incoming information for each drink. This required developing a robust unit converter as well as feeding that information into a nutritional api to get the caloric content.",
+        myRole: "My Role in this project was to design and implement the primary logic functions that are handling and displaying the incoming information for each drink. This required developing a robust unit converter as well as feeding the parsed information into a nutritional API to get the caloric content.",
         repoLink: "https://github.com/kippHulick/front-end-project",
         websiteLink: "https://whatsinmydrink1.netlify.app/"
     },
@@ -119,8 +120,7 @@ const personalProjects: PersonalProjects[] = [
         ],
         about: `Draw.io is an application that was designed with the purpose of letting the user create an account that they can save drawings they've made to, and follow other users to see their creations. Currently the website is uncompleted, and not being hosted; users are able to create digital art, save the art they've made to their account, and follow other users. The user at this point can not edit their previously made artwork, delete their previously made artwork, or see what other users have created.`,
         myRole: "My role in this project was developing the backend aspects of the page. Creaetd the sequelize routes to the ElephantSQL database used in the application, implimented the passport authentication used on the website, implimented the ability to create new accounts, follow and unfollow users, change your profile picture, and save your drawings to your specific account.",
-        repoLink: "https://github.com/kippHulick/front-end-project",
-        websiteLink: "https://whatsinmydrink1.netlify.app/"
+        repoLink: "https://github.com/kippHulick/front-end-project"
     },
 ]
 

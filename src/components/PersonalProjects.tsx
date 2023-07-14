@@ -11,6 +11,7 @@ import personalProjects from "../assets/importPersonalProjects";
 function PersonalProjects() {
   //Logic for switching between my personal projects
   const [selectedPersProject, setSelectedPersProject] = useState<string>(personalProjects[0].projectName);
+  const [shiftDirection, setShiftDirection] = useState<string>("");
   const [initialRender, setInitialRender] = useState<boolean>(true)
   const personalProjectsRef: MutableRefObject<any> = useRef();
 
@@ -22,7 +23,8 @@ function PersonalProjects() {
 
   useEffect(()=>{
     const animateProjectCarousel = (projElements: HTMLCollection):void => {
-      personalProjectsRef.current.className += " animate-personal-projects-section"
+      const animationClass = shiftDirection === "right" ? " animate-personal-projects-section-rev" : " animate-personal-projects-section";
+      personalProjectsRef.current.className += animationClass
       changeProjectDisplay(projElements, 750, selectedPersProject);
       setTimeout(()=>{
         personalProjectsRef.current.className = "personal-projects";
@@ -44,6 +46,7 @@ function PersonalProjects() {
 
   const shiftProject = (direction: string): void => {
     let shift: number = 0;
+    setShiftDirection(direction)
     direction === "right" ? (shift = 1) : (shift = -1);
     for (let project of personalProjects) {
       if (project.projectName == selectedPersProject){
@@ -76,10 +79,9 @@ function PersonalProjects() {
         <section ref={personalProjectsRef} className={initialRender ? "project-carousel-cont" : "personal-projects"}>
           {personalProjects.map((element) => {
             return (
-              <>
                 <div
                   id={element.projectName}
-                  key={element.projectName}
+                  key={element.projectName + "-project-cont"}
                   className="project-carousel-cont"
                   >
                   <h2>{element.projectName}</h2>
@@ -87,13 +89,13 @@ function PersonalProjects() {
                       <Carousel autoPlay={true} interval={4000} infiniteLoop={true}>
                       {element.images.map((img, index) => {
                           return (
-                              <div
+                            <div
                             onClick={(e:any)=>e.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.nextElementSibling.style.display = "flex"}
                             key={element.projectName + "-image-" + index}
                             className="carousel-img-cont carousel-img-cont-mini"
-                          >
-                            <img src={img} />
-                          </div>
+                            >
+                              <img src={img} />
+                            </div>
                         );
                       })}
                     </Carousel>
@@ -145,6 +147,8 @@ function PersonalProjects() {
                       <div className="drop-down">
                         <p>{element.myRole}</p>
                       </div>
+                      {element.websiteLink && <a href={element.websiteLink} target="_blank">Visit the site</a>}
+                      <a href={element.repoLink} target="_blank">Visit the Github Repo</a>
                     </div>
                   </div>
                   <section className="carousel-modal">
@@ -170,7 +174,6 @@ function PersonalProjects() {
                     </div>
                   </section>
                 </div>
-              </>
             );
           })}
           <button className="left-button" onClick={() => shiftProject("left")}>
