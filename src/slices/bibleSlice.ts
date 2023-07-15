@@ -20,14 +20,18 @@ let callAPI = async(type: string, reqHeader: HeadersInit, id?: string) =>{
   } else if (type === 'getChapters') url = `https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/books/${id}/chapters`;
   else if(type === 'getVerses') url = `https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/chapters/${id}/verses`;
   else if (type === 'getQuote') url = `https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/verses/${id}`;
-  let response = await fetch(url, {
-    method: 'GET',
-    headers: reqHeader
-  })
-  await response.json().then((res: {data: Responses})=>{
-    JSONQuote = res.data
-    JSON = res.data
-  })
+  try{
+    let response = await fetch(url, {
+      method: 'GET',
+      headers: reqHeader
+    })
+    await response.json().then((res: {data: Responses})=>{
+      JSONQuote = res.data
+      JSON = res.data
+    })
+  } catch {
+    return null
+  }
   if(type === "getQuote"){
     return JSONQuote as Quote
   } else{if(randNum === -1) randNum = Math.floor(Math.random() * JSON.length)}
@@ -58,6 +62,7 @@ export const bibleSlice = createSlice({
     builder
       .addCase(fetchQuote.pending, (state) => {
         state.status = 'loading'
+        state.quote = 'Retrieving your quote'
       })
       .addCase(fetchQuote.fulfilled, (state, action: PayloadAction<BibleStateBuilder>) => {
         state.quote = action.payload.quote
@@ -66,6 +71,7 @@ export const bibleSlice = createSlice({
       })
       .addCase(fetchQuote.rejected, (state) => {
         state.status = 'failed'
+        state.quote = "Cannot fetch a random quote at this time"
       })
     }
 })

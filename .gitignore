@@ -11,6 +11,9 @@
 # production
 /build
 
+#firebasee
+/.firebase
+
 # misc
 .DS_Store
 .env

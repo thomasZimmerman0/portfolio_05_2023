@@ -11,7 +11,7 @@ body{
     background-size: cover;
     background-image: url(../assets/matteblack.jpg);
     margin: 0;
-    margin-top: 60vh;
+    margin-top: 65vh;
     overflow-x: hidden;
 }
 
@@ -29,7 +29,7 @@ header {
     background-color: black;
     height: 50vh;
     margin-bottom: 52vh;
-    z-index: 2;
+    z-index: 3;
     overflow: hidden;
     border-bottom: solid red 2px;
 }
@@ -135,7 +135,7 @@ header ul li a {
     margin-bottom: 4rem;
     background-color: black;
     color: white;
-    z-index: 2;
+    z-index: 3;
 }
 
 .sticky-header .TPZ{
@@ -221,6 +221,7 @@ header ul li a {
 .nav-dropdown div{
     box-sizing: border-box;
     width: 100%;
+    min-height: 4px;
     max-height: 4px;
     margin-top: 7px;
     background-color: white;
@@ -237,13 +238,13 @@ header ul li a {
 }
 .open-nav:nth-child(2){
     position: absolute;
-    bottom: 76px;
+    bottom: 50%;
     transform: rotate(45deg);
     transition: transform .05s, position .05s;
 }
 .open-nav:nth-child(3){
     position: absolute;
-    bottom: 76px;
+    bottom: 50%;
     transform: rotate(-45deg);
     transition: transform .05s, position .05s;
 }
@@ -255,13 +256,13 @@ header ul li a {
 .dropdown-menu{
     flex-direction: column;
     position: fixed;
-    top: 10rem;
+    top: 7rem;
     margin: 0 5% 0 35%;
     padding:0;
     width: 60%;
     height: 40vh;
     background-color: rgb(255, 255, 255);
-    z-index: 1;
+    z-index: 2;
     display:none;
 }
 
@@ -546,6 +547,7 @@ footer .img-cont p{
         width: 100%;
         justify-content: space-around;
         flex-wrap: wrap;
+        border-bottom: none;
     }
     header ul li{
         margin-bottom: 10px;
