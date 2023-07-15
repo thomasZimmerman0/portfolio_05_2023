@@ -4,7 +4,7 @@ import { useRef, useEffect, MutableRefObject, useState } from 'react';
 
 import { motion, useInView } from "framer-motion";
 
-import  emailjs  from '@emailjs/browser';
+import  emailjs, { EmailJSResponseStatus }  from '@emailjs/browser';
 import ReCAPTCHA from "react-google-recaptcha";
 
 function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
@@ -33,9 +33,9 @@ function Contacts(props : { headerRef: MutableRefObject<any> } | {}) {
             } 
         }
         emailjs.sendForm('service_ieljm36', 'portfolio_contact_form', form.current, process.env.REACT_APP_EMAIL_JS_KEY)
-        .then((result) => {
+        .then((result: EmailJSResponseStatus) => {
             console.log(result)
-        }, (error) => {
+        }, (error: EmailJSResponseStatus) => {
             setError({errorOccured: true, errorMessage: error.text})
         });
     }
