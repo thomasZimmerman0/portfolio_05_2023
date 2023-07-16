@@ -536,6 +536,10 @@ footer .img-cont p{
         width: 60%;
         font-size: 45px;
     }
+    footer .elephant{
+        height: 200px;
+        width: 200px;
+    }
 }
 
 @media (max-width: 1005px){
