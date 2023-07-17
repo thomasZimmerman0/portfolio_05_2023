@@ -15,23 +15,32 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.408);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 1000
 }
 
-.home-banner-container{
-    width: auto;
-    display: inline-block;
+.home-banner-opacity-layer h2{
+    font-size: 40px;
+    font-family: 'Graduate';
 }
 
 .typed-out-container{
     display: inline-block;
 }
 
-.typed-out, .typed-out-pause, .typed-out-reverse{
+.typed-out, .typed-out-pause, .typed-out-reverse, .typed-out-pause-empty{
+    position: relative;
+    box-sizing: border-box;
     width: 0;
     overflow: hidden;
-    border-right: .15em solid rgb(0, 0, 0);
+    border-right: .15em solid rgb(255, 255, 255);
     white-space: nowrap;
     font-size: 1.6rem;
+    font-family: 'Oxanium';
 }
 
 .typed-out{
@@ -39,7 +48,7 @@
 }
 
 .typed-out-reverse{
-    animation: typing 1.25s infinite steps(20) reverse;
+    animation: typing 1.25s infinite steps(20) reverse forwards;
 }
 
 .typed-out-pause{
@@ -47,8 +56,13 @@
     animation: blinking 0.5s infinite;
 }
 
+.typed-out-pause-empty{
+    width: 0;
+    animation: blinking 0.5s infinite;
+}
+
 @keyframes typing {
-    0% { width: 0 }
+    0% { width: 0;}
     100% { width: 100%}
 }
 

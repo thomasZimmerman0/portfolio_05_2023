@@ -14,7 +14,7 @@ function Home() {
   const typedOutRef: MutableRefObject<any> = useRef()
 
   const titles: string[]  = [
-    "Software Devleloper",
+    "Software Developer",
     "Analytical Problem Solver",
     "Thoughtful Leader",
     "Creative Designer",
@@ -22,7 +22,6 @@ function Home() {
   ]
   
   useEffect(()=>{
-    console.log('first')
     let revolution: number = 1
     const intervalID = setInterval(()=>{
       if(typedOutRef.current.classList[0] === "typed-out"){
@@ -30,9 +29,11 @@ function Home() {
       } else if(typedOutRef.current.classList[0] === "typed-out-pause"){
         typedOutRef.current.className = "typed-out-reverse"
       } else if(typedOutRef.current.classList[0] === "typed-out-reverse"){
+        typedOutRef.current.className = "typed-out-pause-empty"
+      }  else if(typedOutRef.current.classList[0] === "typed-out-pause-empty"){
         typedOutRef.current.className = "typed-out"
       }
-      if(revolution === 3){
+      if(revolution === 4){
         clearInterval(intervalID) 
         revolution = 1;
       } else{
@@ -42,16 +43,18 @@ function Home() {
     const timeoutID = setTimeout(()=>{
       if(titleIndex + 1 === titles.length) setTitleIndex(0)
       else setTitleIndex(titleIndex + 1)
-    }, 3.75 * 1000)
-    return () => clearTimeout(timeoutID)
+    }, 5 * 1000)
+    return () => {
+      clearInterval(intervalID)
+      clearTimeout(timeoutID)
+    }
   }, [titleIndex])
 
   return (
     <div className="home-main-container">
       <section className="home-banner">
-        <div className="home-banner-opacity-layer"></div>
-        <div className="home-banner-container">
-          <h2>Thomas Zimmerman</h2>
+        <div className="home-banner-opacity-layer">
+        <h2>Welcome to my Portfolio! I am a(n)...</h2>
           <div className="typed-out-container">
             <div ref={typedOutRef} className="typed-out">{titles[titleIndex]}</div>
           </div>
