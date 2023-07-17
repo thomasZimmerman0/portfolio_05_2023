@@ -39,7 +39,6 @@ function Home() {
     <div className="home-main-container">
       <section className="home-banner">
         <div className="home-banner-opacity-layer">
-          <p>{currentTitle}</p>
         </div>
       </section>
       <PersonalProjects/>
