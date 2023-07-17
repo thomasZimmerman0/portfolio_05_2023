@@ -20,7 +20,7 @@ h1{
     align-items: center;
     min-height: 50vh;
     height: auto;
-    margin:10vh 0;
+    margin:7vh 0;
 }
 
 .contact-info{
@@ -58,7 +58,7 @@ h1{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    min-height: 80vh;
+    min-height: 60vh;
     height: auto;
     width: 80%;
     color: white;
@@ -141,12 +141,12 @@ label strong{
     justify-content: center;
     max-height: 100%;
 }
-
+ 
 .error-box, .success-box{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: auto;
     height: 10vh;
     margin: 4% 0;
     padding: 1%;

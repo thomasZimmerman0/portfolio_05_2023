@@ -1,8 +1,8 @@
 import "./css/Contact.css";
 
-import { useRef, useEffect, MutableRefObject, useState } from "react";
+import { useRef, MutableRefObject, useState } from "react";
 
-import { motion, useInView } from "framer-motion";
+import { motion} from "framer-motion";
 
 import emailjs from "@emailjs/browser";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -85,7 +85,7 @@ function Contacts(props: { headerRef: MutableRefObject<any> } | {}) {
             <label>
               Name <strong>*</strong>
             </label>
-            <input id="name" type="text" name="user_name"></input>
+            <input id="name" type="text" name="from_name"></input>
           </div>
           <div className="contact-input-element">
             <label>
