@@ -6,8 +6,8 @@
     background-image: url(../../assets/jumbo-banner.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    border-top: 20px solid red;
-    border-bottom: 20px solid red;
+    border-top: 10px solid red;
+    border-bottom: 10px solid red;
 }
 
 .home-banner-opacity-layer{

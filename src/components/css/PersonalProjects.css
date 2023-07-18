@@ -1,4 +1,8 @@
-
+.pers-projects-h1{
+    width: 70%;
+    font-size: 80px;
+    margin-bottom: 5%;
+}
 .personal-projects{
     position: relative;
     color: rgb(255, 255, 255);

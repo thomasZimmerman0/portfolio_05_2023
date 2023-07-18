@@ -65,7 +65,9 @@ export interface PersonalProjects {
 }
 
 export interface ProfessionalProjects {
+  projectName: string
   websiteLink: string
-  images: string[],
-  contribution: string
+  image: string,
+  contribution: string[]
 }
+

@@ -70,7 +70,7 @@ function PersonalProjects() {
 
   return (
       <>
-      <h1>
+      <h1 className="pers-projects-h1">
         Personal Projects
       </h1>
         {initialRender ? 
