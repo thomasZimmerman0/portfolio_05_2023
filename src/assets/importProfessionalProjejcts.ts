@@ -26,11 +26,17 @@ const professionalProjects: ProfessionalProjects[] = [
         contribution: ["Made the site mobily responsive", "Implemented the present styling for the donate Modal and header"]
     },
     {
+        projectName: "Axel's Throw House",
+        websiteLink: "https://www.axelsthrowhouse.com/",
+        image: axelsthrowhouse,
+        contribution: ["Worked closely with lead developers to make QA changes, fix bugs, and ensure full functionality of the application", "Wrote up site map for application"]
+    },
+    {
         projectName: "Ideal Institute of Technology",
         websiteLink: "https://iitnj.edu/",
         image: iitnj,
         contribution: ["Worked closely with lead developers to make QA changes, fix bugs, and ensure full functionality of the application", "Wrote custom CSS for mutliple pages"]
-    },
+    }
 ]
 
 export default professionalProjects;

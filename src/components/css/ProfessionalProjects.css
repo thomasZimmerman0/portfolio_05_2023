@@ -1,0 +1,142 @@
+.prof-projects-h1{
+    width: 70%;
+    font-size: 80px;
+    margin-bottom: 5%;
+}
+
+.prof-projects-cont{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: auto;
+    margin: 10%;
+    margin-top: 5%;
+    padding: 3% 0%;
+    height: 70vh;
+    overflow-y: auto;
+    background-color: rgb(84, 147, 255);
+    border-top: 30px solid rgb(255, 255, 255);
+    border-bottom: 30px solid rgb(255, 255, 255);
+    border-right: 30px solid rgb(209, 209, 209);
+    border-left: 30px solid rgb(209, 209, 209);
+    box-shadow: inset 0px 0px 20px 5px black;
+}
+
+.prof-project-cont{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url('../../assets/whitebrick.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 30%;
+    height: auto;
+    margin: 2%;
+    padding: 3%;
+    border-top: 10px solid rgb(57, 57, 57);
+    border-bottom: 10px solid rgb(57, 57, 57);
+    border-right: 10px solid rgb(114, 114, 114);
+    border-left: 10px solid rgb(114, 114, 114);
+    text-align: center;
+    box-shadow: 15px 15px 15px 5px rgba(0, 0, 0, 0.236);
+    font-family: "Oxanium";
+    font-size: 16px;
+    font-weight: 1000;
+}
+
+.prof-project-cont a {
+    text-decoration: none;
+    display: block;
+    width: 95%;
+    word-wrap: break-word;
+    font-size: 22px;
+    color: rgb(0, 106, 255);
+    font-weight: 10000;
+    transition: all 0.5s ease-in-out;
+}
+
+.prof-project-cont a:hover{
+    color: rgb(15, 175, 255);
+    transform: scale(1.1)
+}
+
+
+
+.prof-project-cont h2{
+    font-family: "Graduate";
+    font-size: 32px;
+}
+
+.prof-project-cont ul{
+    text-align: left;
+    padding-left: 4%;
+}
+
+.prof-project-cont li{
+    list-style: circle;
+}
+
+.prof-project-cont img{
+    width: 80%;
+    border: solid black 3px;
+    border-radius: 20px;
+    margin-bottom: 10%;
+}
+
+@media (max-width: 1220px){
+    .prof-project-cont a {
+        font-size: 16px;
+        display: block;
+        width: 80%;
+    }
+}
+@media (max-width: 930px){
+    .prof-project-cont {
+        width:  75%;
+        margin-bottom: 10%;
+    }
+
+    /* Pers project h1 is in PersonalProjects.css but is easier to implement in media listener here */
+    .prof-projects-h1, .pers-projects-h1{
+        font-size: 60px;
+    }
+
+}
+@media (max-width: 654px){
+
+    .prof-projects-h1, .pers-projects-h1{
+        font-size: 40px;
+    }
+    .prof-projects-cont{
+        margin-bottom: 10%;
+    }
+
+}
+@media (max-width: 550px){
+    .prof-projects-cont{
+        margin: 2%;
+        border-top: 15px solid rgb(255, 255, 255);
+        border-bottom: 15px solid rgb(255, 255, 255);
+        border-right: 15px solid rgb(209, 209, 209);
+        border-left: 15px solid rgb(209, 209, 209);
+    }
+    .prof-project-cont h2{
+        font-size: 20px
+    }
+    .prof-projects-h1, .pers-projects-h1{
+        font-size: 35px;
+    }
+}
+@media (max-width: 426px){
+    .prof-project-cont h2{
+        font-size: 16px
+    }
+    .prof-project-cont ul{
+        width: 70%;
+    }
+    .prof-projects-h1, .pers-projects-h1{
+        font-size: 25px;
+    }
+
+}

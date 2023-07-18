@@ -5,8 +5,7 @@ import { useRef, useEffect, MutableRefObject, useState } from "react";
 import { motion} from "framer-motion";
 
 import PersonalProjects from "./PersonalProjects";
-import { type } from "os";
-
+import ProfessionalProjects from "./ProfessionalProjejcts";
 
 function Home() {
 
@@ -60,6 +59,7 @@ function Home() {
           </div>
         </div>
       </section>
+      <ProfessionalProjects/>
       <PersonalProjects/>
     </div>
   );
