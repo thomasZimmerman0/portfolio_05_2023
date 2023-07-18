@@ -9,10 +9,11 @@
     flex-wrap: wrap;
     justify-content: space-around;
     height: auto;
-    margin: 10%;
+    margin: auto;
     margin-top: 5%;
-    padding: 3% 0%;
-    height: 70vh;
+    padding: 1% 0%;
+    width: 85%;
+    height: 80vh;
     overflow-y: auto;
     background-color: rgb(84, 147, 255);
     border-top: 30px solid rgb(255, 255, 255);
@@ -30,10 +31,10 @@
     background-image: url('../../assets/whitebrick.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    width: 30%;
+    width: 40%;
     height: auto;
     margin: 2%;
-    padding: 3%;
+    padding: 1%;
     border-top: 10px solid rgb(57, 57, 57);
     border-bottom: 10px solid rgb(57, 57, 57);
     border-right: 10px solid rgb(114, 114, 114);
@@ -61,11 +62,16 @@
     transform: scale(1.1)
 }
 
-
-
 .prof-project-cont h2{
     font-family: "Graduate";
     font-size: 32px;
+}
+.prof-project-cont h3{
+    margin: 0;
+    margin-top: 5px;
+    padding: 0;
+    font-family: "Graduate";
+    font-size: 20px;
 }
 
 .prof-project-cont ul{

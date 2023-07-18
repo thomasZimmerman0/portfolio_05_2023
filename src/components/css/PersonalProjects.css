@@ -355,6 +355,9 @@
         margin-top: 10%;
         width:  80%;
     }
+    .personal-projects h2{
+        font-size: 40px;
+    }
 }
 @media (max-width: 700px){
     .personal-project-container{
@@ -365,6 +368,9 @@
     }
     .left-button{
         left: 15px
+    }
+    .personal-projects h2{
+        font-size: 35px;
     }
 
 }
@@ -377,6 +383,9 @@
     }
     .left-button{
         left: 10px
+    }
+    .personal-projects h2{
+        font-size: 25px;
     }
 
     .modal-carousel-container{

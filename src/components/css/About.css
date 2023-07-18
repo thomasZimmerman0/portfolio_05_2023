@@ -1,0 +1,127 @@
+.about-main-container{
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 7% 4%;
+    background-image: url(../../assets/metal.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 190vh;
+    width: 90%;
+    margin: 10% auto;
+    border-radius: 100px;
+    border: 40px solid rgb(69, 69, 69);
+    box-shadow: inset 0px 0px 20px 10px black;
+}
+.about-main-container img{
+    object-fit: cover;
+    width: 30%;
+    border-top: 10px solid rgb(15, 55, 255);
+    border-bottom: 10px solid rgb(15, 55, 255);
+    border-right: 10px solid rgb(75, 105, 255);
+    border-left: 10px solid rgb(75, 105, 255);
+    box-shadow: 2px 2px 15px 4px black;
+    transition: all 0.5s ease-in-out;
+}
+.about-main-container img:hover{
+    transform: scale(1.1);
+    animation: 2s animate-border infinite; 
+}
+
+@keyframes animate-border{
+    0% {
+        border-top: 10px solid rgb(15, 55, 255);
+        border-bottom: 10px solid rgb(15, 55, 255);
+        border-right: 10px solid rgb(75, 105, 255);
+        border-left: 10px solid rgb(75, 105, 255);
+    }
+    50% {
+        border-top: 10px solid rgb(0, 120, 40);
+        border-bottom: 10px solid rgb(0, 120, 40);
+        border-right: 10px solid rgb(0, 212, 71);
+        border-left: 10px solid rgb(0, 212, 71);
+    }
+    100% {
+        border-top: 10px solid rgb(15, 55, 255);
+        border-bottom: 10px solid rgb(15, 55, 255);
+        border-right: 10px solid rgb(75, 105, 255);
+        border-left: 10px solid rgb(75, 105, 255);
+    }
+}
+
+.about-main-container p{
+    width: 50%;
+    height: 500px;
+    padding: 4%;
+    box-shadow: inset 0px 0px 10px 5px black;
+    border-top: 10px solid rgb(0, 0, 0);
+    border-bottom: 10px solid rgb(0, 0, 0);
+    border-right: 10px solid rgb(50, 50, 50);
+    border-left: 10px solid rgb(50, 50, 50);
+    background-color: maroon;
+    font-family: "Oxanium";
+    font-size: 20px;
+    font-weight: 1000;
+    color: white;
+    line-height: 40px;
+}
+.about-main-container p a{
+    text-decoration: none;
+    color: rgb(7, 123, 255);
+    font-size: 18px;
+}
+
+
+#second-paragraph-about{
+    height: auto;
+    width: 20%;
+}
+
+#longshot{
+    width: 50%;
+    order: 1
+}
+
+@media (max-width: 1400px){
+    .about-main-container p{
+        font-size: 18px;
+    }
+}
+@media (max-width: 1285px){
+    .about-main-container p{
+        font-size: 16px;
+    }
+}
+@media (max-width: 1170px){
+    .about-main-container p, #second-paragraph-about{
+        width: 80%;
+        height: auto;
+    }
+    #longshot{
+        order: 0
+    }
+}
+
+@media (max-width: 822px){
+    .about-main-container{
+        height: auto;
+    }
+}
+@media (max-width: 700px){
+    .about-main-container{
+        border: 10px solid rgb(69, 69, 69);
+    }
+}
+@media (max-width: 524px){
+    .about-main-container > *{
+        margin-bottom: 15%;
+    }
+    .about-main-container img, #longshot{
+        width: 90%;
+    }
+    .about-main-container{
+       padding: 10%;
+    }
+}

@@ -19,6 +19,7 @@ function ProfessionalProjects() {
                     <h2>{element.projectName}</h2>
                     <img src={element.image} alt={element.projectName}/>
                     <a href={element.websiteLink} target="_blank">Click here to visit {element.websiteLink}!</a>
+                    <h3>Contribution:</h3>
                     <ul>
                       {element.contribution.map((contrib, index) =>{
                         return <li key={contrib}>{contrib}</li>;

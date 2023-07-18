@@ -49,6 +49,7 @@ h1{
 
 .skills-explain p{
     font-size: 24px;
+    font-weight: 1000;
     font-family: "Oxanium";
     color: white;
     margin: 0;
@@ -393,7 +394,7 @@ h1{
 }
 @media (max-height: 930px){
     .skills-explain p{
-        font-size: 16px;
+        font-size: 20px;
     }
     .skills-explain h2{
         font-size: 30px;
