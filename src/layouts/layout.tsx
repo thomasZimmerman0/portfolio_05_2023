@@ -5,7 +5,7 @@ import elephant from "../assets/elephant.jpg";
 import github from "../assets/github.png";
 import linkedin from "../assets/linkedin.png";
 import resumePic from "../assets/resume.png";
-import resume from "../assets/Thomas Zimmerman Resume 05112023.docx (1).pdf";
+import resume from "../assets/Thomas Zimmerman Resume 7_19.pdf";
 
 import { useAppSelector, useAppDispatch } from "../app/hooks";
 import { changeHeader } from "../slices/headerSlice";

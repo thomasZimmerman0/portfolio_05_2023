@@ -14,7 +14,7 @@ function About() {
 
           I've worked on a large quantity of different software applications during my time at Webever, contributing to the development of multiple live websites utilizing my expertise in Wordpress, CSS, HTML, JavaScript, and any other skills  that you can view on my <Link to="/skills">skills page</Link>. Additionally, I also instruct new developers in Full Stack Web Developement for 12+ hours per week.
 
-        </p>    
+        </p>
         <img id="longshot" src={longshot} alt="me"/>    
         <p id="second-paragraph-about">
           
