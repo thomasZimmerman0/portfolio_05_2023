@@ -5,12 +5,13 @@
     justify-content: space-around;
     align-items: center;
     padding: 7% 4%;
+    padding-bottom: 10%;
     background-image: url(../../assets/metal.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 190vh;
+    height: 200vh;
     width: 90%;
-    margin: 10% auto;
+    margin: 5% auto;
     border-radius: 100px;
     border: 40px solid rgb(69, 69, 69);
     box-shadow: inset 0px 0px 20px 10px black;
