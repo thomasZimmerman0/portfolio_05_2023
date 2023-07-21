@@ -70,8 +70,9 @@
 }
 .about-main-container p a{
     text-decoration: none;
-    color: rgb(7, 123, 255);
-    font-size: 18px;
+    color: rgb(94, 169, 255);
+    font-size: 22px;
+    font-weight: 1000;
 }
 
 

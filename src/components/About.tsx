@@ -12,7 +12,7 @@ function About() {
 
           I am a Full-Stack Web Developer with 4+ years of software development experience, currently employed at Webever Technologies. Webever Technologies is a social enterprise based out of May's Landing that is designed to give Junior Software Developers, graphic designers, and entrepreneurs expert training and real world work experience in the tech industry.
 
-          I've worked on a large quantity of different software applications during my time at Webever, contributing to the development of multiple live websites utilizing my expertise in Wordpress, CSS, HTML, JavaScript, and any other skills  that you can view on my <Link to="/skills">skills page</Link>. Additionally, I also instruct new developers in Full Stack Web Developement for 12+ hours per week.
+          I've worked on a large quantity of different software applications during my time at Webever, contributing to the development of multiple live websites utilizing my expertise in Wordpress, CSS, HTML, JavaScript, and all of my other tech skills that you can view on my <Link to="/skills">skills page</Link>. Additionally, I also instruct new developers in Full Stack Web Developement for 12+ hours per week.
 
         </p>
         <img id="longshot" src={longshot} alt="me"/>    
