@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Graduate&display=swap');
 
+.skills-h1{
+    margin-top: 7%;
+}
 
 h1{
     margin: auto;

@@ -80,7 +80,7 @@ function Skills(props : { headerRef: MutableRefObject<any> } | {}) {
   }
   return (
     <>
-    <h1>SKILLS</h1>
+    <h1 className="skills-h1">SKILLS</h1>
     <div className="main-container-skills">
         <div className="skills-explain">
           <h2>Explanation</h2>

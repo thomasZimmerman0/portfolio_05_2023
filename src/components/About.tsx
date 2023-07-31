@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function About() {
   return ( <>
-      <h1>About</h1>
+      <h1 className="about-h1">About</h1>
       <div className="about-main-container">
         <img src={headshot} alt="me"/>
         <p>

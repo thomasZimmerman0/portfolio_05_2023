@@ -11,7 +11,7 @@ body{
     background-size: cover;
     background-image: url(../assets/matteblack.jpg);
     margin: 0;
-    margin-top: 65vh;
+    margin-top: 50vh;
     overflow-x: hidden;
 }
 
@@ -313,6 +313,7 @@ header ul li a {
 .component-container{
     width: 100%;
     height: auto;
+    overflow-x: hidden;
 }
 
 .animate-comp{

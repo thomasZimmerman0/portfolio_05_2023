@@ -78,7 +78,7 @@ function Contacts(props: { headerRef: MutableRefObject<any> } | {}) {
   }
   return (
     <>
-      <h1>CONTACT</h1>
+      <h1 className="contact-h1">CONTACT</h1>
       <div className="main-container-contact">
         <form ref={form} onSubmit={runSendForm} id="contact-form">
           <div className="contact-input-element">
