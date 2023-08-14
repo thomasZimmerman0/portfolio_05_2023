@@ -31,7 +31,7 @@ h1{
     display:flex;
     width: 80%;
     height: 5vh;
-    margin: 10vh auto 0 auto;
+    margin: 5vh auto 0 auto;
     align-items: center;
     justify-content: center;
     background-image: url('../../assets/whitetextured.jpg');
@@ -109,6 +109,7 @@ label strong{
 }
 
 .submit-box{
+    margin-top: 2%;
     display:flex;
     justify-content: center;
     align-items: center;;

@@ -91,12 +91,12 @@
 }
 
 @media (max-width: 1400px){
-    .about-main-container p{
+    .about-main-container p, .about-main-container p a{
         font-size: 18px;
     }
 }
 @media (max-width: 1285px){
-    .about-main-container p{
+    .about-main-container p,   .about-main-container p a{
         font-size: 16px;
     }
 }
@@ -117,7 +117,12 @@
 }
 @media (max-width: 700px){
     .about-main-container{
-        border: 10px solid rgb(69, 69, 69);
+        border: 3px solid rgb(69, 69, 69);
+        width: 95%;
+        padding-top: 15%;
+    }
+    .about-main-container p{
+        width: 95%;
     }
 }
 @media (max-width: 524px){
@@ -126,8 +131,5 @@
     }
     .about-main-container img, #longshot{
         width: 90%;
-    }
-    .about-main-container{
-       padding: 10%;
     }
 }
