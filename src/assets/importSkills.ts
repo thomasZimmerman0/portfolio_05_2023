@@ -27,6 +27,9 @@ import restAPI from "./skills-icons/RestApi.png";
 import sequelize from "./skills-icons/Sequelize.png";
 import vscode from "./skills-icons/VScode.png";
 import wordpress from "./skills-icons/Worespress.png";
+import zapier from "./skills-icons/zapier.png";
+import bootstrap from "./skills-icons/bootstrap.png";
+import django from "./skills-icons/django.png";
 import { SkillInfo } from "../interfaces/interfaces";
 
 const skillData: SkillInfo[] = [
@@ -115,6 +118,12 @@ const skillData: SkillInfo[] = [
     Link: "https://redux.js.org/"  
   },
   {
+    skillName: "Django",
+    image: django,
+    description: "Django is a free and open-source, Python-based web framework that follows the model–template–views (MTV) architectural pattern. It is maintained by the Django Software Foundation (DSF), an independent organization established in the US as a 501(c)(3) non-profit.",
+    Link: "https://www.djangoproject.com/"  
+  },
+  {
     skillName: "Express",
     image: express,
     description: "Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.",
@@ -152,6 +161,12 @@ const skillData: SkillInfo[] = [
     Link: "https://www.framer.com/motion/"  
   },
   {
+    skillName: "Bootstrap",
+    image: bootstrap,
+    description: "Bootstrap is a free and open-source CSS framework directed at responsive, mobile-first front-end web development. It contains HTML, CSS and (optionally) JavaScript-based design templates for typography, forms, buttons, navigation, and other interface components.",
+    Link: "https://getbootstrap.com/"  
+  },
+  {
     skillName: "PostgreSQL",
     image: postgresql,
     description: "PostgreSQL is a powerful, open source object-relational database system with over 35 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance.",
@@ -186,6 +201,12 @@ const skillData: SkillInfo[] = [
     image: vscode,
     description: "Visual Studio Code, also commonly referred to as VS Code,[9] is a source-code editor made by Microsoft with the Electron Framework, for Windows, Linux and macOS.[10] Features include support for debugging, syntax highlighting, intelligent code completion, snippets, code refactoring, and embedded Git. Users can change the theme, keyboard shortcuts, preferences, and install extensions that add functionality.",
     Link: "https://code.visualstudio.com/"  
+  },
+  {
+    skillName: "Zapier",
+    image: zapier,
+    description: "Zapier provides workflows to automate the use of web applications together. It is often described as a translator between web APIs, helping to increase worker productivity by saving time through automation of recurring tasks, and business processes such as lead management. Through an interface in which users can set up workflow rules to determine how its automations function,it orchestrates flow of data between tools and online services that wouldn't otherwise communicate with one another.",
+    Link: "https://zapier.com/"  
   },
   {
     skillName: "G-Sutie",
