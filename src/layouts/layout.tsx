@@ -351,7 +351,7 @@ function BaseLayout(props: { children: JSX.Element }) {
             onMouseEnter={() => mouseOverOutBibleQuote("block")}
             onMouseLeave={() => mouseOverOutBibleQuote("none")}
           >
-            Randomy Generated Bible Verse!
+            Randomly Generated Bible Verse!
           </h2>
           <div className="quote-explain" ref={quotePopupRef}>
             This Bible verse is being randomy generated with The Bible API from{" "}

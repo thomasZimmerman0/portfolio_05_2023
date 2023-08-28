@@ -503,7 +503,7 @@ h1{
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
-        padding: 3%;
+        margin-top: 25vh;
     }
     .card-back{
         background-image: url('../../assets/cardback-rightsideup.jpg');
