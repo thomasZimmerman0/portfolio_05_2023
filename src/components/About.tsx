@@ -10,7 +10,7 @@ function About() {
         <img src={headshot} alt="me"/>
         <p>
 
-          I am a Full-Stack Web Developer with 6+ years of software development experience, currently employed at the Ideal Institute of Technology. In my current role, I specialize on giving Junior Software Developers expert training and real world work experience in the tech industry by working with teammates and building modern full stack applications.
+          I am a Full-Stack Web Developer with 6+ years of software development experience, currently employed at the Ideal Institute of Technology. In my current role, I specialize in full stack web development for a vairety of differnet applications. Additionally, I educate Junior Software Developersby teaching them to work in teams, and to utilize modern development mehtodologies.
 
           I've worked on a large quantity of different software applications, contributing to the development of multiple live websites utilizing my expertise in a mulitiude of tech skills that you can view on my <Link to="/skills">skills page</Link>. Being able to work with and learn from a team with expert graphic designers, engineers, project managers, and developers is something that I'm proud to say I do for a living.
 
