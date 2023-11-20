@@ -4,14 +4,13 @@
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    margin: auto;
 }
 
 .home-banner{
     position: relative;
     top: -15vh;
     width: 100%;
-    height: 80vh;
+    height: 115vh;
     background-image: url(../../assets/jumbo-banner.jpg);
     background-repeat: no-repeat;
     background-size: cover;

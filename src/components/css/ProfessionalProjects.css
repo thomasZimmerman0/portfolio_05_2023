@@ -1,29 +1,41 @@
 .prof-projects-h1{
-    width: 70%;
+    margin-top: 15%;
+    margin-bottom: 8%;
+    width: 80%;
     font-size: 80px;
+    z-index: 1;
 }
 .prof-projects-cont{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    height: auto;
-    margin: auto;
-    margin-top: 5%;
-    padding: 1% 0%;
+    height: 100%;
+    position: relative;
+    top: -15vh;;
+    padding: 10% 0%;
     padding-top: 0%;
-    width: 85%;
-    height: 70vh;
-    overflow-y: auto;
+    width: 100%;
     background-color: rgb(84, 147, 255);
-    border-top: 30px solid rgb(255, 255, 255);
-    border-bottom: 30px solid rgb(255, 255, 255);
-    border-right: 30px solid rgb(209, 209, 209);
-    border-left: 30px solid rgb(209, 209, 209);
     box-shadow: inset 0px 0px 20px 5px black;
+    background-image: url("../../assets/code.PNG");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+.prof-projects-cont-ol{
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.40);
+    z-index:0;
 }
 
 .prof-project-cont{
     display: flex;
+    position: relative;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
@@ -42,7 +54,19 @@
     box-shadow: 15px 15px 15px 5px rgba(0, 0, 0, 0.236);
     font-family: "Oxanium";
     font-size: 16px;
-    font-weight: 1000;
+    font-weight: bolder;
+    text-shadow: 0px 0px 1px black;
+    z-index: 1;
+}
+
+.prof-project-cont-ol{
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0px;
+    background-color: rgba(0, 0, 0, 0.141);
+    z-index: 1;
 }
 
 .prof-project-cont a {
@@ -54,6 +78,7 @@
     color: rgb(0, 106, 255);
     font-weight: 10000;
     transition: all 0.5s ease-in-out;
+    z-index: 2;
 }
 
 .prof-project-cont a:hover{
@@ -64,6 +89,7 @@
 .prof-project-cont h2{
     font-family: "Graduate";
     font-size: 32px;
+    z-index: 2;
 }
 .prof-project-cont h3{
     margin: 0;
@@ -71,11 +97,13 @@
     padding: 0;
     font-family: "Graduate";
     font-size: 20px;
+    z-index: 2;
 }
 
 .prof-project-cont ul{
     text-align: left;
     padding-left: 4%;
+    z-index: 2;
 }
 
 .prof-project-cont li{
@@ -89,6 +117,7 @@
     border: solid black 3px;
     border-radius: 20px;
     margin-bottom: 2%;
+    z-index: 2;
 }
 
 @media (max-width: 1220px){
@@ -134,14 +163,6 @@
 @media (max-width: 550px){
     .prof-projects-h1{
         margin-bottom: 2%;
-    }
-    .prof-projects-cont{
-        margin: 2%;
-        border-top: 15px solid rgb(255, 255, 255);
-        border-bottom: 15px solid rgb(255, 255, 255);
-        border-right: 15px solid rgb(209, 209, 209);
-        border-left: 15px solid rgb(209, 209, 209);
-        width: 75%;
     }
     .prof-project-cont h2, .prof-project-cont h3{
         font-size: 20px
