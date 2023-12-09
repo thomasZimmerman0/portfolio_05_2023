@@ -1,0 +1,51 @@
+[debug] [2023-12-09T21:47:55.935Z] ----------------------------------------------------------------------
+[debug] [2023-12-09T21:47:55.937Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\tomzi\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-12-09T21:47:55.937Z] CLI Version:   13.0.1
+[debug] [2023-12-09T21:47:55.938Z] Platform:      win32
+[debug] [2023-12-09T21:47:55.938Z] Node Version:  v20.10.0
+[debug] [2023-12-09T21:47:55.938Z] Time:          Sat Dec 09 2023 16:47:55 GMT-0500 (Eastern Standard Time)
+[debug] [2023-12-09T21:47:55.938Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-12-09T21:47:56.001Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-12-09T21:47:56.002Z] > authorizing via signed-in user (tomzimmerman18@gmail.com)
+[debug] [2023-12-09T21:47:56.002Z] [iam] checking project tpzimmerman for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-12-09T21:47:56.004Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/tpzimmerman:testIamPermissions [none]
+[debug] [2023-12-09T21:47:56.004Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/tpzimmerman:testIamPermissions x-goog-quota-user=projects/tpzimmerman
+[debug] [2023-12-09T21:47:56.004Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/tpzimmerman:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-12-09T21:47:56.373Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/tpzimmerman:testIamPermissions 200
+[debug] [2023-12-09T21:47:56.374Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/tpzimmerman:testIamPermissions {}
+[debug] [2023-12-09T21:47:56.374Z] [iam] error while checking permissions, command may fail: FirebaseError: Authorization failed. This account is missing the following required permissions on project tpzimmerman:
+
+  firebase.projects.get
+  firebasehosting.sites.update
+[debug] [2023-12-09T21:47:56.374Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/tpzimmerman [none]
+[debug] [2023-12-09T21:47:56.768Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/tpzimmerman 403
+[debug] [2023-12-09T21:47:56.768Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/tpzimmerman {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2023-12-09T21:47:56.769Z] HTTP Error: 403, The caller does not have permission
+[error] 
+[error] Error: Assertion failed: resolving hosting target of a site with no site name or target name. This should have caused an error earlier
+[debug] [2023-12-09T21:48:10.018Z] ----------------------------------------------------------------------
+[debug] [2023-12-09T21:48:10.020Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\tomzi\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2023-12-09T21:48:10.021Z] CLI Version:   13.0.1
+[debug] [2023-12-09T21:48:10.021Z] Platform:      win32
+[debug] [2023-12-09T21:48:10.021Z] Node Version:  v20.10.0
+[debug] [2023-12-09T21:48:10.021Z] Time:          Sat Dec 09 2023 16:48:10 GMT-0500 (Eastern Standard Time)
+[debug] [2023-12-09T21:48:10.021Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-12-09T21:48:10.084Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-12-09T21:48:10.084Z] > authorizing via signed-in user (tomzimmerman18@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  E:\Programs\portfolio_05_2023\portfolio_05_2023
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+

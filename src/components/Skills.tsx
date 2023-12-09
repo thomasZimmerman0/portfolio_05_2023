@@ -80,7 +80,7 @@ function Skills(props : { headerRef: MutableRefObject<any> } | {}) {
   }
   return (
     <>
-    <div className="card-back" style={{opacity: '000'}}></div>
+    <div className="card-back" style={{opacity: '000', height: '0px'}}></div>
     <h1 className="skills-h1">SKILLS</h1>
     <div className="main-container-skills">
         <div className="skills-explain">
